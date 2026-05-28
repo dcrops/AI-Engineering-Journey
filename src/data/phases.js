@@ -28,15 +28,15 @@ I was intrigued and looked into the problem...`,
     label: "PHASE 2",
     title: "Payroll Diagnostics Engine",
     description: `I had now built my first operational application, however it quickly became clear that Public Holiday Entitlements were only one medium-sized operational payroll problem.
-
-Payroll systems contained much larger risks: incorrect leave calculations, termination errors, award interpretation issues, missing evidence, data integrity gaps and operational drift across payroll datasets.
-
-This became the beginning of the Payroll Diagnostics Engine.
-
-The platform evolved from a single entitlement workflow into a broader governance-aware diagnostics system capable of ingesting payroll datasets, validating operational integrity, evaluating modular rule logic and generating evidence-oriented reporting for operational review and audit support.`,
+  
+  Payroll systems contained much larger risks: incorrect leave calculations, termination errors, award interpretation issues, missing evidence, data integrity gaps and operational drift across payroll datasets.
+  
+  This became the beginning of the Payroll Diagnostics Engine.
+  
+  The platform evolved from a single entitlement workflow into a broader governance-aware diagnostics system capable of ingesting payroll datasets, validating operational integrity, evaluating modular rule logic and generating evidence-oriented reporting for operational review and audit support.`,
     layers: [
-      "INGESTION",
-      "VALIDATION",
+      "DATA INGESTION",
+      "DATA VALIDATION",
       "DIAGNOSTIC ENGINE",
       "RISK FINDINGS",
       "EXECUTIVE REPORTING",
@@ -52,7 +52,7 @@ That experience pushed me further toward AI engineering and led to the decision 
 
 The goal was not simply to build another generic chatbot.
 
-I wanted to better understand and develop practical AI engineering skills around:`,
+I wanted to better understand and develop practical AI engineering skills across the full retrieval and grounded-response pipeline including:`,
     skills: [
       "retrieval engineering",
       "orchestration-aware workflows",
@@ -77,6 +77,17 @@ This was especially relevant for organisations without dedicated AI engineering 
       "EMBEDDINGS",
       "RETRIEVAL",
       "RESPONSE",
+    ],
+    advancedLayers: [
+      "ORCHESTRATION",
+      "TELEMETRY",
+      "EVALUATION",
+      "OBSERVABILITY",
+      "DEPLOYMENT",
+      "CONVERSATIONAL RETRIEVAL",
+      "GROUNDED GENERATION",
+      "API ARCHITECTURE",
+      "SAFETY & GUARDRAILS",
     ],
   },
 ]
