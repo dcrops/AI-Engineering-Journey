@@ -27,13 +27,15 @@ I was intrigued and looked into the problem...`,
     id: "03",
     label: "PHASE 2",
     title: "Payroll Diagnostics Engine",
-    description: `I had now built my first operational application, however it quickly became clear that Public Holiday Entitlements were only one medium-sized operational payroll problem.
-  
-  Payroll systems contained much larger risks: incorrect leave calculations, termination errors, award interpretation issues, missing evidence, data integrity gaps and operational drift across payroll datasets.
-  
-  This became the beginning of the Payroll Diagnostics Engine.
-  
-  The platform evolved from a single entitlement workflow into a broader governance-aware diagnostics system capable of ingesting payroll datasets, validating operational integrity, evaluating modular rule logic and generating evidence-oriented reporting for operational review and audit support.`,
+    description: `
+I had now built my first operational application, however it quickly became clear that Public Holiday Entitlements were only one medium-sized operational payroll problem.
+
+Payroll systems contained much larger risks: incorrect leave calculations, termination errors, award interpretation issues, missing evidence, data integrity gaps and operational drift across payroll datasets.
+
+This became the beginning of the Payroll Diagnostics Engine.
+
+The platform evolved from a single entitlement workflow into a broader governance-aware diagnostics system capable of ingesting payroll datasets, validating operational integrity, evaluating modular rule logic and generating evidence-oriented reporting for operational review and audit support.
+`,
     layers: [
       "DATA INGESTION",
       "DATA VALIDATION",
