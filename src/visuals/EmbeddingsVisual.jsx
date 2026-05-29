@@ -21,6 +21,14 @@ import {
     ["4. Store in Vector DB", "Vectors and metadata are stored in the vector database", Database],
     ["5. Ready for Retrieval", "Semantic vectors are now available for similarity search", Search],
   ]
+
+  const pipelineColours = [
+    "text-violet-300 border-violet-400/25 bg-violet-500/10",
+    "text-blue-300 border-blue-400/25 bg-blue-500/10",
+    "text-cyan-300 border-cyan-400/25 bg-cyan-500/10",
+    "text-yellow-300 border-yellow-400/25 bg-yellow-500/10",
+    "text-emerald-300 border-emerald-400/25 bg-emerald-500/10",
+  ]
   
   const config = [
     ["Model", "text-embedding-3-small", "OpenAI Embeddings", BrainCircuit, "text-emerald-300"],
@@ -56,14 +64,20 @@ import {
         <SectionTitle>Embedding Pipeline</SectionTitle>
   
         <div className="mt-6 grid grid-cols-5 gap-4">
-          {pipeline.map(([title, description, Icon], index) => (
+        {pipeline.map(([title, description, Icon], index) => {
+          const colourClasses = pipelineColours[index]
+          const textColour = colourClasses.split(" ")[0]
+
+          return (
             <div key={title} className="relative">
               <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400/25 bg-cyan-500/10">
-                  <Icon className="h-6 w-6 text-cyan-300" />
-                </div>
-  
-                <div className="mt-4 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">
+              <div
+                className={`mx-auto flex h-14 w-14 items-center justify-center rounded-full border ${colourClasses}`}
+              >
+                <Icon className={`h-6 w-6 ${textColour}`} />
+              </div>
+                
+                <div className={`mt-4 text-[10px] font-black uppercase tracking-[0.2em] ${textColour}`}>
                   {title}
                 </div>
   
@@ -76,7 +90,8 @@ import {
                 <div className="absolute left-full top-7 hidden h-px w-4 bg-cyan-400/60 xl:block" />
               )}
             </div>
-          ))}
+            )
+          })}
         </div>
   
         <SectionTitle className="mt-6">Embedding Configuration</SectionTitle>

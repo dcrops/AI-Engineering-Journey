@@ -1,6 +1,7 @@
 export const layerDetails = {
     "02:ADDRESS INPUT": {
       title: "Address Input",
+      layout: "wide",
       visual: "holiday-input",
       tags: [
         "office address",
@@ -46,6 +47,7 @@ export const layerDetails = {
     },
     "02:GEOGRAPHIC RESOLUTION": {
     title: "Geographic Resolution",
+    layout: "wide",
     visual: "geo",
 
     tags: [
@@ -97,6 +99,7 @@ export const layerDetails = {
     },
         "02:LGA / REGION MATCHING": {
     title: "LGA / Region Matching",
+    layout: "wide",
     visual: "map",
 
     tags: [
@@ -145,6 +148,7 @@ export const layerDetails = {
     },
     "02:ENTITLEMENT RULE ENGINE": {
   title: "Entitlement Rule Engine",
+  layout: "wide",
   visual: "holiday-rules",
 
   tags: [
@@ -194,6 +198,7 @@ export const layerDetails = {
 
 "02:AUDITABLE OUTPUTS": {
   title: "Auditable Outputs",
+  layout: "wide",
   visual: "holiday-audit",
 
   tags: [

@@ -8,12 +8,28 @@ import {
 export default function HeroSection() {
     return (
       <section className="relative mx-auto flex min-h-screen max-w-[1600px] flex-col justify-between px-8 py-8 md:px-16">
-        <header className="flex justify-between text-[10px] uppercase tracking-[0.35em] text-zinc-400">
-          <div>
-            <b className="text-lg tracking-normal text-white">CRC</b>
-            &nbsp; CHASE RISK & COMPLIANCE
+        <header className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <img
+              src="/crc_logo.png"
+              alt="CRC Logo"
+              className="h-14 w-auto"
+            />
+
+            <div>
+              <div className="text-2xl font-black text-white">
+                CRC
+              </div>
+
+              <div className="text-[11px] uppercase tracking-[0.45em] text-zinc-400">
+                Chase Risk & Compliance
+              </div>
+            </div>
           </div>
-          <div>ENGINEERING JOURNEY</div>
+
+          <div className="text-[10px] uppercase tracking-[0.4em] text-zinc-500">
+            Engineering Journey
+          </div>
         </header>
   
         <div className="grid gap-12 lg:grid-cols-[1.2fr_.8fr] lg:items-start">
@@ -43,7 +59,7 @@ export default function HeroSection() {
   
           <div className="mt-10 w-full max-w-md justify-self-end rounded-3xl border border-cyan-400/20 bg-black/60 p-7 shadow-[0_0_80px_rgba(0,255,255,0.06)] backdrop-blur-sm">
             <div className="text-[10px] uppercase tracking-[0.35em] text-cyan-300">
-              Portfolio Contact
+              Connect
             </div>
   
             <div className="mt-5 text-4xl font-black leading-none text-white">
@@ -80,31 +96,39 @@ export default function HeroSection() {
   
             <div className="mt-8 grid grid-cols-2 gap-3">
               <a
-                href="#"
+                href="/David-Cropper-CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 rounded-xl border border-violet-400/30 bg-violet-500/10 px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-violet-200 transition-all duration-200 hover:border-violet-300 hover:bg-violet-500/20"
               >
                 <FaFileAlt size={16} />
                 Resume
               </a>
-  
+
               <a
-                href="#"
+                href="https://www.linkedin.com/in/david-cropper/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 rounded-xl border border-blue-400/30 bg-blue-500/10 px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-blue-200 transition-all duration-200 hover:border-blue-300 hover:bg-blue-500/20"
               >
                 <FaLinkedin size={16} />
                 LinkedIn
               </a>
-  
+
               <a
-                href="#"
+                href="https://github.com/dcrops"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-300 transition-all duration-200 hover:border-white/30"
               >
                 <FaGithub size={16} />
                 GitHub
               </a>
-  
+
               <a
                 href="https://www.chaseriskandcompliance.com.au"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 rounded-xl border border-cyan-400/30 bg-cyan-500/10 px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-cyan-200 transition-all duration-200 hover:border-cyan-300 hover:bg-cyan-500/20"
               >
                 <FaGlobe size={16} />

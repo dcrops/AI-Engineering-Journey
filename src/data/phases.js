@@ -90,4 +90,23 @@ This was especially relevant for organisations without dedicated AI engineering 
       "SAFETY & GUARDRAILS",
     ],
   },
+  {
+    id: "05",
+    label: "PHASE 4",
+    title: "Operational Intelligence Copilot",
+    description: `
+  The next evolution of the platform.
+  
+  The Document Intelligence RAG System focused on helping AI understand documents.
+
+  For the Operational Intelligence Copilot, I want to explore how AI can understand business operations.
+
+  The goal is to build an Operational Intelligence Copilot capable of analysing structured data, identifying patterns, explaining findings and supporting operational decision-making.
+
+  Beyond the platform itself, this project is an opportunity to continue developing practical AI engineering skills around orchestration, explainability, evaluation, observability and governance-aware AI systems.
+
+  Currently in planning and design.
+  `,
+    layers: ["Coming Soon"]
+  }
 ]
