@@ -28,11 +28,11 @@ export default function PhaseSection({ phase }) {
       </div>
 
       <div className="relative z-20">
-        <div className="max-w-5xl space-y-6 text-[19px] leading-9 text-zinc-300">
-          {phase.description.split("\n\n").map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+      <div className="max-w-5xl space-y-6 text-[19px] leading-9 text-zinc-300">
+        {phase.description.split("\n\n").map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
 
         {phase.layers && (
           <div className="mt-8 flex flex-wrap items-center gap-3">
