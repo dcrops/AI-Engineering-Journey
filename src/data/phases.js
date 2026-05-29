@@ -5,7 +5,11 @@ export const phases = [
     title: "How Chase Risk & Compliance came to being.",
     description: `The project began when I was asked to help investigate a public holiday entitlement challenge affecting a major Australian banking environment.
 
-They wanted a way to track public holiday entitlement as when banks are audited they can be fined millions of dollars for this issue and similar ones like it.
+What started as a small side project eventually became Chase Risk & Compliance (CRC), a company I founded to explore operational risk, governance and AI-driven decision support systems.
+
+The projects throughout this portfolio were designed and built by me as part of that journey.
+
+The bank wanted a way to track public holiday entitlement as when banks are audited they can be fined millions of dollars for this issue and similar ones like it.
 
 I was intrigued and looked into the problem...`,
   },
