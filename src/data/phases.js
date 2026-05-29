@@ -3,7 +3,7 @@ export const phases = [
     id: "01",
     label: "THE BEGINNING",
     title: "How Chase Risk & Compliance came to being.",
-    description: `A friend working for one of the big 4 banks came to me wanting some assistance on a payroll project he was working on.
+    description: `The project began when I was asked to help investigate a public holiday entitlement challenge affecting a major Australian banking environment.
 
 They wanted a way to track public holiday entitlement as when banks are audited they can be fined millions of dollars for this issue and similar ones like it.
 
