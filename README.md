@@ -1,10 +1,21 @@
 # AI Engineering Journey
 
-An interactive portfolio showcasing my progression from operational diagnostics and governance systems into AI engineering, retrieval systems, and governance-aware AI workflows.
+An interactive portfolio showcasing my progression from Data Engineering and Operational Intelligence into AI Engineering, Retrieval-Augmented Generation (RAG), Governance-Aware AI, and Operational Decision Support systems.
+
+## Live Portfolio
+
+🌐 Portfolio Showcase
+
+https://journey.chaseriskandcompliance.com.au/
 
 ## Overview
 
-This project presents the major systems I have designed and built as part of my AI engineering journey:
+This repository contains the source code for my interactive AI Engineering Journey portfolio.
+
+The portfolio presents the systems, architectures, engineering decisions, and AI concepts explored through a series of increasingly sophisticated projects spanning operational diagnostics, governance systems, retrieval engineering, explainable AI, and production-oriented AI platforms.
+
+The goal is to demonstrate not only what was built, but why it was built, the engineering challenges encountered, and the lessons learned throughout the transition into AI Engineering.
+
 
 ### Phase 1 — Public Holiday Entitlements Engine
 A governance-focused operational application designed to resolve complex public holiday entitlement rules across Australian jurisdictions.
@@ -109,6 +120,7 @@ npm run build
 
 - LinkedIn: https://www.linkedin.com/in/david-cropper/
 - GitHub: https://github.com/dcrops
+- Portfolio: https://journey.chaseriskandcompliance.com.au/
 - Website: https://www.chaseriskandcompliance.com.au/
 
 ---
