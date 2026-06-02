@@ -1,9 +1,11 @@
 import {
-    FaGithub,
-    FaLinkedin,
-    FaGlobe,
-    FaFileAlt,
-  } from "react-icons/fa"
+  FaGithub,
+  FaLinkedin,
+  FaGlobe,
+  FaFileAlt,
+  FaEnvelope,
+  FaPhone,
+} from "react-icons/fa"
 
 export default function HeroSection() {
     return (
@@ -69,7 +71,25 @@ export default function HeroSection() {
             <div className="mt-4 text-sm uppercase tracking-[0.18em] text-zinc-500">
               AI Engineer
             </div>
-  
+
+            <div className="mt-6 space-y-3 text-sm text-zinc-400">
+              <a
+                href="mailto:dave_cropper2003@yahoo.co.uk"
+                className="flex items-center gap-3 transition-colors hover:text-cyan-300"
+              >
+                <FaEnvelope className="text-cyan-400" />
+                <span>dave_cropper2003@yahoo.co.uk</span>
+              </a>
+
+              <a
+                href="tel:0400811545"
+                className="flex items-center gap-3 transition-colors hover:text-cyan-300"
+              >
+                <FaPhone className="text-cyan-400" />
+                <span>0400 811 545</span>
+              </a>
+            </div>
+
             <div className="mt-8 border-t border-white/10 pt-6">
               <div className="space-y-5 text-sm text-zinc-300">
                 <div className="flex items-center gap-4">
