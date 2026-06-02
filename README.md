@@ -16,6 +16,52 @@ The portfolio presents the systems, architectures, engineering decisions, and AI
 
 The goal is to demonstrate not only what was built, but why it was built, the engineering challenges encountered, and the lessons learned throughout the transition into AI Engineering.
 
+## Portfolio Screenshots
+
+### AI Engineering Journey Homepage
+
+The landing page of the interactive portfolio, presenting the progression from operational systems and governance-focused engineering into modern AI engineering, retrieval systems, and governance-aware AI platforms.
+
+![AI Engineering Journey Homepage](public/portfolio-homepage.png)
+
+---
+
+### Governance-Aware Document Intelligence RAG System
+
+An overview of the Governance-Aware Retrieval-Augmented Generation (RAG) platform, highlighting the major architectural layers involved in building a production-oriented AI system focused on explainability, trust, and grounded responses.
+
+![Document Intelligence RAG System](public/rag-system-overview.png)
+
+---
+
+### Document Intelligence – Ingestion Layer
+
+A detailed view of the ingestion layer responsible for accepting documents, validating inputs, preparing content for chunking, and establishing the foundation for retrieval and downstream AI workflows.
+
+![Document Intelligence Ingestion Layer](public/rag-ingestion-layer.png)
+
+---
+
+## Live Portfolio
+
+Explore the interactive portfolio:
+
+**Portfolio:** https://journey.chaseriskandcompliance.com.au/
+
+## Source Code
+
+**GitHub Repository:** https://github.com/dcrops/AI-Engineering-Journey
+
+The portfolio contains:
+
+* Public Holiday Entitlements Platform
+* Payroll Diagnostics Engine
+* Governance-Aware RAG Platform
+* AI Engineering Architecture Walkthroughs
+* System Design Decisions
+* AI Engineering Learning Journey
+
+
 
 ### Phase 1 — Public Holiday Entitlements Engine
 A governance-focused operational application designed to resolve complex public holiday entitlement rules across Australian jurisdictions.
