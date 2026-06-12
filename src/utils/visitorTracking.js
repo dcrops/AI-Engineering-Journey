@@ -38,7 +38,7 @@ async function notifyDiscord(payload) {
 function shouldNotify(eventType, value, label = "") {
     const normalisedLabel = String(label).toLowerCase();
   
-    if (eventType === "journey_visit") return false;
+    if (eventType === "journey_visit") return true;
   
     if (eventType === "project_section_viewed") return false;
   
