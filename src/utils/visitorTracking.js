@@ -35,15 +35,34 @@ async function notifyDiscord(payload) {
   }
 }
 
-function shouldNotify(eventType, value) {
-  if (eventType === "journey_visit") return true;
-  if (eventType === "cta_click") return true;
-  if (eventType === "time_on_page") return Number(value) >= 60;
-  if (eventType === "scroll_depth") return Number(value) >= 75;
-  if (eventType === "project_section_viewed") return false;
-
-  return false;
-}
+function shouldNotify(eventType, value, label = "") {
+    const normalisedLabel = String(label).toLowerCase();
+  
+    if (eventType === "journey_visit") return false;
+  
+    if (eventType === "project_section_viewed") return false;
+  
+    if (eventType === "time_on_page") {
+      return Number(value) >= 60;
+    }
+  
+    if (eventType === "scroll_depth") {
+      return Number(value) >= 90;
+    }
+  
+    if (eventType === "cta_click") {
+      return (
+        normalisedLabel.includes("resume") ||
+        normalisedLabel.includes("linkedin") ||
+        normalisedLabel.includes("github") ||
+        normalisedLabel.includes("email") ||
+        normalisedLabel.includes("phone") ||
+        normalisedLabel.includes("crc website")
+      );
+    }
+  
+    return false;
+  }
 
 export function trackJourneyEvent(eventType, params = {}) {
   const label = params.label || "";
@@ -56,7 +75,7 @@ export function trackJourneyEvent(eventType, params = {}) {
     ...params,
   });
 
-  if (shouldNotify(eventType, value)) {
+  if (shouldNotify(eventType, value, label)) {
     notifyDiscord({
       eventType,
       label,
