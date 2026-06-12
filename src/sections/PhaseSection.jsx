@@ -3,6 +3,7 @@ import { layerDetails } from "../data/layerDetails"
 import VisualRegistry from "../visuals/VisualRegistry"
 import { motion, AnimatePresence } from "framer-motion"
 import { AlertTriangle, Wrench, ShieldCheck } from "lucide-react"
+import { trackJourneyEvent } from "../utils/visitorTracking"
 
 export default function PhaseSection({ phase }) {
   const [selectedLayer, setSelectedLayer] = useState(null)
@@ -10,6 +11,30 @@ export default function PhaseSection({ phase }) {
 
   const selectedKey = selectedLayer ? `${phase.id}:${selectedLayer}` : null
   const selectedDetail = selectedKey ? layerDetails[selectedKey] : null
+
+  function handleLayerClick(layer) {
+    const isClosingCurrentLayer = selectedLayer === layer
+
+    setSelectedLayer(isClosingCurrentLayer ? null : layer)
+
+    if (!isClosingCurrentLayer) {
+      trackJourneyEvent("project_section_viewed", {
+        label: `${phase.title} - ${layer}`,
+      })
+    }
+  }
+
+  function handleAdvancedToggle() {
+    const willShowAdvancedLayers = !showAdvancedLayers
+
+    setShowAdvancedLayers(willShowAdvancedLayers)
+    setSelectedLayer(null)
+
+    trackJourneyEvent("cta_click", {
+      label: `${phase.title} - Advanced AI Engineering Capabilities toggled`,
+      value: willShowAdvancedLayers ? "opened" : "closed",
+    })
+  }
 
   return (
     <section className="relative grid min-h-[250px] gap-8 overflow-visible border-t border-white/10 py-10 lg:grid-cols-[120px_320px_1fr]">
@@ -28,20 +53,21 @@ export default function PhaseSection({ phase }) {
       </div>
 
       <div className="relative z-20">
-      <div className="max-w-5xl space-y-6 text-[19px] leading-9 text-zinc-300">
-        {phase.description.split("\n\n").map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-      </div>
+        <div className="max-w-5xl space-y-6 text-[19px] leading-9 text-zinc-300">
+          {phase.description.split("\n\n").map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
 
         {phase.layers && (
           <div className="mt-8 flex flex-wrap items-center gap-3">
             {phase.layers.map((layer, index) => (
               <div key={layer} className="flex items-center gap-3">
                 <button
-                  onClick={() =>
-                    setSelectedLayer(selectedLayer === layer ? null : layer)
-                  }
+                  type="button"
+                  data-track
+                  data-track-label={`${phase.title} - ${layer} clicked`}
+                  onClick={() => handleLayerClick(layer)}
                   className={`rounded-xl border px-6 py-3.5 text-xs font-bold uppercase tracking-[0.28em] transition-all duration-200 ${
                     selectedLayer === layer
                       ? "border-violet-400/70 bg-violet-500/15 text-white"
@@ -62,10 +88,10 @@ export default function PhaseSection({ phase }) {
         {phase.advancedLayers && (
           <div className="mt-8 flex justify-center">
             <button
-              onClick={() => {
-                setShowAdvancedLayers((prev) => !prev)
-                setSelectedLayer(null)
-              }}
+              type="button"
+              data-track
+              data-track-label={`${phase.title} - Advanced AI Engineering Capabilities clicked`}
+              onClick={handleAdvancedToggle}
               className={`group rounded-2xl border px-10 py-5 transition-all duration-300 ${
                 showAdvancedLayers
                   ? "border-cyan-400/70 bg-cyan-500/15 text-white shadow-[0_0_30px_rgba(34,211,238,0.15)]"
@@ -96,9 +122,10 @@ export default function PhaseSection({ phase }) {
                 {phase.advancedLayers.map((layer, index) => (
                   <div key={layer} className="flex items-center gap-3">
                     <button
-                      onClick={() =>
-                        setSelectedLayer(selectedLayer === layer ? null : layer)
-                      }
+                      type="button"
+                      data-track
+                      data-track-label={`${phase.title} - ${layer} clicked`}
+                      onClick={() => handleLayerClick(layer)}
                       className={`rounded-xl border px-6 py-3.5 text-xs font-bold uppercase tracking-[0.28em] transition-all duration-200 ${
                         selectedLayer === layer
                           ? "border-violet-400/70 bg-violet-500/15 text-white"

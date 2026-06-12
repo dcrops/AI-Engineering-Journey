@@ -3,6 +3,7 @@ export const phases = [
     id: "01",
     label: "THE BEGINNING",
     title: "How Chase Risk & Compliance came to being.",
+    trackingLabel: "Origin story section opened",
     description: `The project began when I was asked to help investigate a public holiday entitlement challenge affecting a major Australian banking environment.
 
 What started as a small side project eventually became Chase Risk & Compliance (CRC), a company I founded to explore operational risk, governance and AI-driven decision support systems.
@@ -17,6 +18,7 @@ I was intrigued and looked into the problem...`,
     id: "02",
     label: "PHASE 1",
     title: "Public Holiday Entitlements App",
+    trackingLabel: "Public Holiday Entitlements project opened",
     description:
       "Public holiday logic became far more complex than expected. National holidays, state holidays, LGA-specific replacements and suburb-level exceptions created a layered operational rules problem that required geographic reasoning, validation and auditability.",
     layers: [
@@ -31,6 +33,7 @@ I was intrigued and looked into the problem...`,
     id: "03",
     label: "PHASE 2",
     title: "Payroll Diagnostics Engine",
+    trackingLabel: "Payroll Diagnostics Engine project opened",
     description: `
 I had now built my first operational application, however it quickly became clear that Public Holiday Entitlements were only one medium-sized operational payroll problem.
 
@@ -52,6 +55,7 @@ The platform evolved from a single entitlement workflow into a broader governanc
     id: "04",
     label: "PHASE 3",
     title: "Document Intelligence RAG System",
+    trackingLabel: "Document Intelligence RAG project opened",
     description: `At this point I had already started exploring AI while building a CRC Copilot to improve risk coverage and operational oversight for the Payroll Diagnostics Engine.
 
 That experience pushed me further toward AI engineering and led to the decision to build a Governance-Aware Document Intelligence RAG System focused on operational knowledge retrieval, grounded responses and explainable AI workflows.
@@ -100,6 +104,7 @@ This was especially relevant for organisations without dedicated AI engineering 
     id: "05",
     label: "PHASE 4",
     title: "Operational Intelligence Copilot",
+    trackingLabel: "Operational Intelligence Copilot project opened",
     description: `
 The next evolution of the platform.
 
@@ -111,6 +116,6 @@ Beyond the platform itself, this project is an opportunity to continue developin
 
 Currently in planning and design.
 `,
-    layers: ["Coming Soon"]
-  }
+    layers: ["Coming Soon"],
+  },
 ]
