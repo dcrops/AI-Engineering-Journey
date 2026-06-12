@@ -10,6 +10,26 @@ const ALLOWED_EVENT_TYPES = new Set([
     if (!value) return "";
     return String(value).replace(/[`<>@]/g, "").slice(0, maxLength);
   }
+
+  function getReferrerLabel(referrer) {
+    if (!referrer) return "Direct / unknown";
+  
+    const normalised = String(referrer).toLowerCase();
+  
+    if (normalised.includes("linkedin.com")) return "LinkedIn";
+    if (normalised.includes("seek.com")) return "Seek";
+    if (normalised.includes("google.")) return "Google";
+    if (normalised.includes("github.com")) return "GitHub";
+    if (normalised.includes("chatgpt.com")) return "ChatGPT";
+    if (normalised.includes("openai.com")) return "OpenAI";
+  
+    try {
+      const url = new URL(referrer);
+      return url.hostname.replace(/^www\./, "");
+    } catch {
+      return "Direct / unknown";
+    }
+  }
   
   export default async function handler(req, res) {
     if (req.method !== "POST") {
@@ -29,7 +49,7 @@ const ALLOWED_EVENT_TYPES = new Set([
       const label = safeText(body.label, 160);
       const path = safeText(body.path, 160);
       const pageTitle = safeText(body.pageTitle, 160);
-      const referrer = safeText(body.referrer, 300);
+      const referrer = getReferrerLabel(safeText(body.referrer, 300));
       const value = safeText(body.value, 80);
   
       if (!ALLOWED_EVENT_TYPES.has(eventType)) {
