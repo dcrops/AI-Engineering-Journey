@@ -28,6 +28,12 @@ I was intrigued and looked into the problem...`,
       "ENTITLEMENT RULE ENGINE",
       "AUDITABLE OUTPUTS",
     ],
+    engineeringHighlights: [
+      ["6", "Processing Engines"],
+      ["17", "Production Features"],
+      ["8", "Australian Jurisdictions"],
+      ["7", "Governance Status Codes"],
+    ],
   },
   {
     id: "03",
@@ -49,6 +55,12 @@ The platform evolved from a single entitlement workflow into a broader governanc
       "DIAGNOSTIC ENGINE",
       "RISK FINDINGS",
       "EXECUTIVE REPORTING",
+    ],
+    engineeringHighlights: [
+      ["115", "Diagnostic Rules"],
+      ["6", "Diagnostic Engines"],
+      ["10", "Executive Reports"],
+      ["78", "Automated Tests"],
     ],
   },
   {
@@ -99,6 +111,12 @@ This was especially relevant for organisations without dedicated AI engineering 
       "API ARCHITECTURE",
       "SAFETY & GUARDRAILS",
     ],
+    engineeringHighlights: [
+      ["13", "RAG Components"],
+      ["36", "Evaluation Cases"],
+      ["4", "Orchestration Intents"],
+      ["4", "Chunking Strategies"],
+    ],
   },
   {
     id: "05",
@@ -135,6 +153,12 @@ This became the Operational Intelligence Platform — a deterministic-first anal
       "GOLDEN USER JOURNEYS",
       "REGRESSION TESTING",
       "LLM FALLBACKS",
+    ],
+    engineeringHighlights: [
+      ["595", "Automated Tests"],
+      ["15", "Golden User Journeys"],
+      ["18", "Engineering Components"],
+      ["21", "Production Features"],
     ],
   },
 ]

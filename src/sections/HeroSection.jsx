@@ -8,14 +8,6 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa"
 
-const engineeringMetrics = [
-  "4 AI Platforms",
-  "17+ Interactive React Visuals",
-  "80+ Automated Tests",
-  "Production Deployments",
-  "Governance-First AI Design",
-]
-
 export default function HeroSection() {
   return (
     <section className="relative mx-auto flex min-h-screen max-w-[1600px] flex-col justify-between px-8 py-8 md:px-16">
@@ -66,25 +58,7 @@ export default function HeroSection() {
           </h1>
         </div>
 
-        <div className="mt-10 w-full max-w-md justify-self-end space-y-4">
-          <div className="rounded-3xl border border-white/10 bg-black/50 p-5 shadow-[0_0_40px_rgba(34,211,238,0.04)]">
-            <div className="text-[10px] font-black uppercase tracking-[0.35em] text-cyan-300">
-              Engineering Snapshot
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {engineeringMetrics.map((metric) => (
-                <span
-                  key={metric}
-                  className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[11px] font-semibold text-zinc-300"
-                >
-                  {metric}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-cyan-400/20 bg-black/60 p-7 shadow-[0_0_80px_rgba(0,255,255,0.06)] backdrop-blur-sm">
+        <div className="mt-10 w-full max-w-md justify-self-end rounded-3xl border border-cyan-400/20 bg-black/60 p-7 shadow-[0_0_80px_rgba(0,255,255,0.06)] backdrop-blur-sm">
           <div className="text-[10px] uppercase tracking-[0.35em] text-cyan-300">
             Connect
           </div>
@@ -207,7 +181,6 @@ export default function HeroSection() {
               <div className="h-2.5 w-2.5 rounded-full bg-green-400 shadow-[0_0_14px_rgba(74,222,128,1)]" />
               <span>Open to AI Engineering opportunities</span>
             </div>
-          </div>
           </div>
         </div>
       </div>

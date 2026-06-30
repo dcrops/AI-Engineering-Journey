@@ -85,6 +85,10 @@ export default function PhaseSection({ phase }) {
           </div>
         )}
 
+        {phase.engineeringHighlights && (
+          <EngineeringHighlights highlights={phase.engineeringHighlights} />
+        )}
+
         {phase.advancedLayers && (
           <div className="mt-8 flex justify-center">
             <button
@@ -208,6 +212,48 @@ export default function PhaseSection({ phase }) {
         </AnimatePresence>
       </div>
     </section>
+  )
+}
+
+function EngineeringHighlights({ highlights }) {
+  const accents = [
+    "border-cyan-400/20 bg-cyan-500/10",
+    "border-violet-400/20 bg-violet-500/10",
+    "border-emerald-400/20 bg-emerald-500/10",
+    "border-amber-400/20 bg-amber-500/10",
+  ]
+
+  const valueColours = [
+    "text-cyan-300",
+    "text-violet-300",
+    "text-emerald-300",
+    "text-amber-300",
+  ]
+
+  return (
+    <div className="mt-8">
+      <div className="text-[10px] font-black uppercase tracking-[0.35em] text-cyan-300">
+        Engineering Highlights
+      </div>
+
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {highlights.map(([value, label], index) => (
+          <div
+            key={label}
+            className={`rounded-xl border px-4 py-4 text-center ${accents[index % accents.length]}`}
+          >
+            <div
+              className={`text-3xl font-black tabular-nums leading-none ${valueColours[index % valueColours.length]}`}
+            >
+              {value}
+            </div>
+            <div className="mt-2 text-[10px] font-black uppercase leading-snug tracking-[0.12em] text-zinc-400">
+              {label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
