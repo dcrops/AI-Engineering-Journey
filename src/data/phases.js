@@ -103,19 +103,38 @@ This was especially relevant for organisations without dedicated AI engineering 
   {
     id: "05",
     label: "PHASE 4",
-    title: "Operational Intelligence Copilot",
+    title: "Operational Intelligence Platform",
     trackingLabel: "Operational Intelligence Copilot project opened",
     description: `
-The next evolution of the platform.
+After building the Governance-Aware Document Intelligence RAG Platform, I wanted to move beyond document retrieval and build a system capable of reasoning over operational datasets.
 
-Building on the lessons learned from Payroll Diagnostics and the Document Intelligence RAG System, this project focuses on operational reasoning over structured business data.
+The goal was not to create another dashboard.
 
-The goal is to build an Operational Intelligence Copilot capable of analysing structured data, identifying patterns, explaining findings and supporting operational decision-making.
+I wanted to build an executive decision-support platform capable of analysing business data, identifying patterns, explaining its reasoning, surfacing supporting evidence and producing trusted recommendations without relying on an LLM to invent conclusions.
 
-Beyond the platform itself, this project is an opportunity to continue developing practical AI engineering skills around orchestration, explainability, evaluation and operational intelligence.
-
-Currently in planning and design.
+This became the Operational Intelligence Platform — a deterministic-first analytics platform combining structured analytical reasoning, evidence-based decision support and AI-assisted executive insights.
 `,
-    layers: ["Coming Soon"],
+    layers: [
+      "DATASET PROFILING",
+      "INTELLIGENT ROUTING",
+      "DETERMINISTIC ANALYTICS",
+      "EVIDENCE GENERATION",
+      "EXECUTIVE REASONING",
+      "EXECUTIVE SUMMARY",
+      "AUDIT TRAIL",
+    ],
+    advancedLayers: [
+      "TREND ANALYSIS",
+      "VARIANCE ANALYSIS",
+      "ANOMALY DETECTION",
+      "RISK ASSESSMENT",
+      "DIRECT ANSWERS",
+      "EVIDENCE TRANSPARENCY",
+      "AUDIT & VERIFICATION",
+      "GOLDEN DATASETS",
+      "GOLDEN USER JOURNEYS",
+      "REGRESSION TESTING",
+      "LLM FALLBACKS",
+    ],
   },
 ]

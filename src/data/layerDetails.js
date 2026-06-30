@@ -677,4 +677,292 @@ export const layerDetails = {
   visual: "safety-guardrails",
   actions: [],
 },
+
+"05:DATASET PROFILING": {
+  title: "Dataset Profiling",
+  layout: "wide",
+  body: {
+    problem:
+      "Operational datasets rarely arrive with clear structure, reliable metadata or obvious analytical pathways. Before any reasoning could happen, the system needed to understand what fields existed, which columns were useful and whether the data was suitable for analysis.",
+    built:
+      "I built a profiling layer that inspected uploaded datasets, identified date, categorical and numeric fields, detected missing values, suggested candidate metrics and dimensions, and produced a structured dataset profile for downstream analytical routing.",
+    mattered:
+      "Dataset profiling allowed the platform to move beyond static dashboards by making analytical decisions based on the actual structure and quality of the data provided.",
+  },
+  tags: ["DATASET INSPECTION", "SCHEMA DETECTION", "QUALITY CHECKS", "ANALYTICAL READINESS"],
+  visual: "dataset-profiling",
+  actions: [],
+},
+
+"05:INTELLIGENT ROUTING": {
+  title: "Intelligent Routing",
+  layout: "wide",
+  body: {
+    problem:
+      "Operational questions can require very different analytical approaches. A trend question, variance question, anomaly question and risk question should not all be handled by the same generic workflow.",
+    built:
+      "I built routing logic that used the dataset profile and user question to select the most appropriate deterministic analytical workflow, directing requests toward trend analysis, variance analysis, anomaly detection, risk assessment or summary generation.",
+    mattered:
+      "Intelligent routing made the system behave more like an analytical copilot rather than a generic chat interface, improving reliability by sending questions to purpose-built analytical paths.",
+  },
+  tags: ["QUESTION ROUTING", "ANALYSIS SELECTION", "TOOL SELECTION", "DETERMINISTIC PATHS"],
+  visual: "intelligent-routing",
+  actions: [],
+},
+
+"05:DETERMINISTIC ANALYTICS": {
+  title: "Deterministic Analytics",
+  layout: "wide",
+  body: {
+    problem:
+      "LLMs are useful for explanation, but they should not invent calculations or make unsupported analytical conclusions from business data.",
+    built:
+      "I implemented deterministic analytical tools for trend analysis, variance analysis, anomaly detection and risk assessment so that findings were generated from structured calculations rather than free-form model output.",
+    mattered:
+      "This created a trustworthy analytical foundation where AI could help explain results, but the core findings remained grounded in repeatable, testable logic.",
+  },
+  tags: ["TREND ANALYSIS", "VARIANCE ANALYSIS", "ANOMALY DETECTION", "RISK SCORING"],
+  visual: "deterministic-analytics",
+  actions: [],
+},
+
+"05:EVIDENCE GENERATION": {
+  title: "Evidence Generation",
+  layout: "wide",
+  body: {
+    problem:
+      "Operational insights are only useful if users can understand where they came from. Findings without supporting evidence are difficult to trust, validate or act on.",
+    built:
+      "I implemented evidence generation so that analytical findings were linked back to supporting metrics, source rows, comparisons, calculated values and diagnostic context.",
+    mattered:
+      "Evidence generation transformed analytical outputs from simple summaries into traceable findings that could support operational review, governance and decision-making.",
+  },
+  tags: ["EVIDENCE ITEMS", "FINDING SUPPORT", "SOURCE DATA", "TRACEABILITY"],
+  visual: "evidence-generation",
+  actions: [],
+},
+
+"05:EXECUTIVE REASONING": {
+  title: "Executive Reasoning",
+  layout: "wide",
+  body: {
+    problem:
+      "Analytical findings often remain too fragmented for executive use. Trends, anomalies and risks need to be interpreted together before they become useful decision-support information.",
+    built:
+      "I built an executive reasoning layer that synthesised analytical outputs into higher-level interpretations, connecting findings across tools and translating technical results into operational meaning.",
+    mattered:
+      "This helped move the platform from analytics output toward decision support, showing not only what happened but why it mattered operationally.",
+  },
+  tags: ["FINDING SYNTHESIS", "BUSINESS CONTEXT", "RISK INTERPRETATION", "DECISION SUPPORT"],
+  visual: "executive-reasoning",
+  actions: [],
+},
+
+"05:EXECUTIVE SUMMARY": {
+  title: "Executive Summary",
+  layout: "wide",
+  body: {
+    problem:
+      "Operational leaders need concise, prioritised summaries rather than raw analytical output or long technical explanations.",
+    built:
+      "I built executive summary generation that converted evidence-backed findings into clear summaries, key risks, recommended actions and decision-support narratives.",
+    mattered:
+      "The executive summary layer made the platform useful to non-technical stakeholders by converting structured analysis into clear, reviewable and action-oriented output.",
+  },
+  tags: ["EXECUTIVE REPORTING", "RECOMMENDATIONS", "PRIORITISED INSIGHTS", "DECISION SUPPORT"],
+  visual: "executive-summary",
+  actions: [],
+},
+
+"05:AUDIT TRAIL": {
+  title: "Audit Trail",
+  layout: "wide",
+  body: {
+    problem:
+      "Operational AI systems need to be reviewable. Users should be able to see what data was analysed, which tools ran, what evidence was used and how conclusions were produced.",
+    built:
+      "I implemented an audit trail concept that records dataset context, analytical steps, generated findings, evidence references and reasoning outputs so results can be reviewed and explained.",
+    mattered:
+      "Auditability helped ensure the platform behaved like a governance-aware operational system rather than a black-box AI assistant.",
+  },
+  tags: ["TRACEABILITY", "GOVERNANCE", "REPRODUCIBILITY", "REVIEWABILITY"],
+  visual: "audit-trail",
+  actions: [],
+},
+
+"05:TREND ANALYSIS": {
+  title: "Trend Analysis",
+  layout: "wide",
+  body: {
+    problem:
+      "Leaders need to know whether metrics are genuinely changing over time, not react to isolated data points or anecdotes.",
+    built:
+      "Developed deterministic trend analysis that evaluates metric movement across periods, calculates percentage change and produces evidence-backed findings.",
+    mattered:
+      "Gave the platform a repeatable way to explain directional movement without relying on an LLM to infer trends from raw tables.",
+  },
+  tags: ["TREND DETECTION", "TIME SERIES", "MOVEMENT ANALYSIS", "DETERMINISTIC CALCULATION"],
+  visual: "trend-analysis",
+  actions: [],
+},
+
+"05:VARIANCE ANALYSIS": {
+  title: "Variance Analysis",
+  layout: "wide",
+  body: {
+    problem:
+      "Operational risk often concentrates in specific departments or business units, but high-level summaries can hide where variance originates.",
+    built:
+      "Engineered variance analysis that compares metrics across categorical dimensions and identifies which groups drive the strongest operational differences.",
+    mattered:
+      "Converted broad operational movement into explainable business context by showing where issues were concentrated.",
+  },
+  tags: ["GROUP COMPARISON", "DEPARTMENT VARIANCE", "CONTRIBUTION ANALYSIS", "OPERATIONAL DIFFERENCES"],
+  visual: "variance-analysis",
+  actions: [],
+},
+
+"05:ANOMALY DETECTION": {
+  title: "Anomaly Detection",
+  layout: "wide",
+  body: {
+    problem:
+      "Operational datasets contain unusual spikes, drops and outliers that are difficult to identify manually, especially at scale.",
+    built:
+      "Introduced deterministic anomaly detection using statistical thresholds to flag values materially outside expected operating ranges.",
+    mattered:
+      "Surfaced unusual events warranting investigation without subjective interpretation or model-generated assumptions.",
+  },
+  tags: ["OUTLIER DETECTION", "BASELINE COMPARISON", "Z-SCORE ANALYSIS", "EXCEPTION IDENTIFICATION"],
+  visual: "anomaly-detection",
+  actions: [],
+},
+
+"05:RISK ASSESSMENT": {
+  title: "Risk Assessment",
+  layout: "wide",
+  body: {
+    problem:
+      "Analytical findings are not equally important. Users need to know which results require attention and which are lower priority.",
+    built:
+      "Designed a risk assessment layer that translates analytical outputs into prioritised findings using severity, evidence coverage and operational context.",
+    mattered:
+      "Made the platform decision-support oriented by turning raw analytical results into ranked operational priorities.",
+  },
+  tags: ["RISK SCORING", "FINDING PRIORITISATION", "SEVERITY EVALUATION", "REVIEW GUIDANCE"],
+  visual: "risk-assessment",
+  actions: [],
+},
+
+"05:DIRECT ANSWERS": {
+  title: "Direct Answers",
+  layout: "wide",
+  body: {
+    problem:
+      "Business users ask direct operational questions and expect clear answers, but generic AI responses can be unsupported or disconnected from the data.",
+    built:
+      "Built direct answer workflows that generate concise responses from deterministic analysis and attach supporting evidence rather than free-form model assumptions.",
+    mattered:
+      "Made the platform easier to use while preserving trust, because responses remained grounded in analytical outputs and evidence items.",
+  },
+  tags: ["QUESTION ANSWERING", "ANALYTICAL RESPONSE", "EVIDENCE-BACKED ANSWERS", "EXECUTIVE Q&A"],
+  visual: "direct-answers",
+  actions: [],
+},
+
+"05:EVIDENCE TRANSPARENCY": {
+  title: "Evidence Transparency",
+  layout: "wide",
+  body: {
+    problem:
+      "AI-assisted operational systems must show why a conclusion was reached. Without transparency, users cannot validate or trust the output.",
+    built:
+      "Integrated evidence transparency into the output layer so claims could be linked back to supporting calculations, source data and analytical findings.",
+    mattered:
+      "Improved trust and reviewability by making every important answer traceable to the underlying analysis.",
+  },
+  tags: ["EVIDENCE TRAIL", "SOURCE SUPPORT", "CLAIM VALIDATION", "TRANSPARENT OUTPUTS"],
+  visual: "evidence-transparency",
+  actions: [],
+},
+
+"05:AUDIT & VERIFICATION": {
+  title: "Audit & Verification",
+  layout: "wide",
+  body: {
+    problem:
+      "Operational AI outputs must be reviewable and defensible, especially for governance, risk and executive decision support.",
+    built:
+      "Implemented audit and verification patterns that record datasets, analytical tools, evidence references, calculation paths and AI involvement.",
+    mattered:
+      "Helped ensure the platform behaved like a governance-aware operational system rather than a black-box AI assistant.",
+  },
+  tags: ["AUDITABILITY", "REVIEW CONTROLS", "GOVERNANCE", "VERIFICATION CHECKS"],
+  visual: "audit-verification",
+  actions: [],
+},
+
+"05:GOLDEN DATASETS": {
+  title: "Golden Datasets",
+  layout: "wide",
+  body: {
+    problem:
+      "Complex analytical systems are difficult to trust without stable test datasets representing known scenarios and expected outputs.",
+    built:
+      "Created a golden dataset approach using curated operational datasets with known structures, expected patterns and repeatable testing scenarios.",
+    mattered:
+      "Made it possible to validate analytical behaviour consistently as the platform evolved.",
+  },
+  tags: ["TEST DATASETS", "EXPECTED PATTERNS", "REGRESSION SAFETY", "QUALITY BASELINES"],
+  visual: "golden-datasets",
+  actions: [],
+},
+
+"05:GOLDEN USER JOURNEYS": {
+  title: "Golden User Journeys",
+  layout: "wide",
+  body: {
+    problem:
+      "Individual tool tests are useful, but they do not prove the full journey works from question through analysis, evidence and summary.",
+    built:
+      "Introduced golden user journeys to test complete operational workflows across profiling, routing, analytics, evidence generation and executive output.",
+    mattered:
+      "Helped validate the platform from a user perspective rather than only testing isolated components.",
+  },
+  tags: ["END-TO-END TESTING", "USER FLOWS", "JOURNEY VALIDATION", "QUALITY ENGINEERING"],
+  visual: "golden-user-journeys",
+  actions: [],
+},
+
+"05:REGRESSION TESTING": {
+  title: "Regression Testing",
+  layout: "wide",
+  body: {
+    problem:
+      "As analytical and AI-assisted systems grow, small changes can accidentally break previously working behaviour.",
+    built:
+      "Added regression testing to verify that core workflows continued producing expected outputs across profiling, routing, analytics, evidence and summary generation.",
+    mattered:
+      "Gave the platform stronger engineering reliability and reduced the risk of silent behavioural drift.",
+  },
+  tags: ["AUTOMATED TESTING", "QUALITY CONTROL", "EXPECTED OUTPUTS", "ENGINEERING CONFIDENCE"],
+  visual: "regression-testing",
+  actions: [],
+},
+
+"05:LLM FALLBACKS": {
+  title: "LLM Fallbacks",
+  layout: "wide",
+  body: {
+    problem:
+      "Operational systems should not fail or invent conclusions when an LLM is unavailable, unreliable or inappropriate for a given task.",
+    built:
+      "Designed fallback behaviour where deterministic analysis and evidence generation still run even when AI-assisted narrative generation is disabled or unavailable.",
+    mattered:
+      "Made the platform more reliable by ensuring users still receive structured analytical outputs without unsupported AI conclusions.",
+  },
+  tags: ["FAILSAFE BEHAVIOUR", "LLM RESILIENCE", "DETERMINISTIC OUTPUTS", "SAFE DEGRADATION"],
+  visual: "llm-fallbacks",
+  actions: [],
+},
 }

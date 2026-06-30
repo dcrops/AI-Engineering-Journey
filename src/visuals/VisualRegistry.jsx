@@ -23,6 +23,24 @@ import ConversationalRetrievalVisual from "./ConversationalRetrievalVisual"
 import GroundedGenerationVisual from "./GroundedGenerationVisual"
 import ApiArchitectureVisual from "./ApiArchitectureVisual"
 import SafetyGuardrailsVisual from "./SafetyGuardrailsVisual"
+import DatasetProfilingVisual from "./DatasetProfilingVisual"
+import IntelligentRoutingVisual from "./IntelligentRoutingVisual"
+import DeterministicAnalyticsVisual from "./DeterministicAnalyticsVisual"
+import EvidenceGenerationVisual from "./EvidenceGenerationVisual"
+import ExecutiveReasoningVisual from "./ExecutiveReasoningVisual"
+import ExecutiveSummaryVisual from "./ExecutiveSummaryVisual"
+import AuditTrailVisual from "./AuditTrailVisual"
+import TrendAnalysisVisual from "./TrendAnalysisVisual"
+import VarianceAnalysisVisual from "./VarianceAnalysisVisual"
+import AnomalyDetectionVisual from "./AnomalyDetectionVisual"
+import RiskAssessmentVisual from "./RiskAssessmentVisual"
+import DirectAnswersVisual from "./DirectAnswersVisual"
+import EvidenceTransparencyVisual from "./EvidenceTransparencyVisual"
+import AuditVerificationVisual from "./AuditVerificationVisual"
+import GoldenDatasetsVisual from "./GoldenDatasetsVisual"
+import GoldenUserJourneysVisual from "./GoldenUserJourneysVisual"
+import RegressionTestingVisual from "./RegressionTestingVisual"
+import LlmFallbacksVisual from "./LlmFallbacksVisual"
 
 const visualMap = {
   "holiday-input": HolidayInputVisual,
@@ -50,6 +68,24 @@ const visualMap = {
   "grounded-generation": GroundedGenerationVisual,
   "api-architecture": ApiArchitectureVisual,
   "safety-guardrails": SafetyGuardrailsVisual,
+  "dataset-profiling": DatasetProfilingVisual,
+  "intelligent-routing": IntelligentRoutingVisual,
+  "deterministic-analytics": DeterministicAnalyticsVisual,
+  "evidence-generation": EvidenceGenerationVisual,
+  "executive-reasoning": ExecutiveReasoningVisual,
+  "executive-summary": ExecutiveSummaryVisual,
+  "audit-trail": AuditTrailVisual,
+  "trend-analysis": TrendAnalysisVisual,
+  "variance-analysis": VarianceAnalysisVisual,
+  "anomaly-detection": AnomalyDetectionVisual,
+  "risk-assessment": RiskAssessmentVisual,
+  "direct-answers": DirectAnswersVisual,
+  "evidence-transparency": EvidenceTransparencyVisual,
+  "audit-verification": AuditVerificationVisual,
+  "golden-datasets": GoldenDatasetsVisual,
+  "golden-user-journeys": GoldenUserJourneysVisual,
+  "regression-testing": RegressionTestingVisual,
+  "llm-fallbacks": LlmFallbacksVisual,
 }
 
 export default function VisualRegistry({ type }) {

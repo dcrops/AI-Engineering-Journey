@@ -103,7 +103,9 @@ export default function PhaseSection({ phase }) {
               </div>
 
               <div className="mt-2 text-xs tracking-wide text-zinc-400 group-hover:text-zinc-300">
-                Evaluation • Observability • Deployment • Safety • Telemetry
+                {phase.id === "05"
+                  ? "Evidence • Explainability • Governance • Reliability • Testing"
+                  : "Evaluation • Observability • Deployment • Safety • Telemetry"}
               </div>
             </button>
           </div>
