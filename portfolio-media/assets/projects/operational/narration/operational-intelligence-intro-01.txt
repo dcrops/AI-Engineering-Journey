@@ -1,0 +1,9 @@
+After building the Governance-Aware Document Intelligence platform, I wanted to move beyond document retrieval and tackle a different challenge — using AI to reason over operational data while maintaining transparency, explainability and trust.
+
+Many AI applications rely on large language models to generate conclusions directly. This project deliberately takes a different approach. It first establishes a deterministic analytical foundation, ensuring that analytical facts are produced by controlled and explainable processes. AI is then used to communicate those findings rather than invent them.
+
+The platform begins by profiling the uploaded dataset and interpreting the user’s question. It then routes the request through the appropriate deterministic analysis, generates supporting evidence, and transforms the results into executive reasoning and concise summaries. Every stage remains traceable through a complete audit and verification trail.
+
+Beyond analytical capability, the project focuses heavily on engineering quality, combining a layered architecture with behavioural testing, production features and extensive automated validation to ensure reliability as the platform evolves.
+
+The platform supports trend analysis, variance analysis, anomaly detection and risk assessment, while preserving evidence transparency and explainability. Golden datasets, golden user journeys, regression testing and controlled language-model fallbacks help ensure that AI augments the deterministic system without replacing its analytical source of truth.

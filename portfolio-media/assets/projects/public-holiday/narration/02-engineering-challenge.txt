@@ -1,0 +1,7 @@
+Determining the correct public holiday entitlement isn't simply a postcode lookup.
+
+Every address must first be resolved into accurate geographic coordinates before being matched against Australian Bureau of Statistics LGA boundaries.
+
+From there, national, state, regional and locality-specific rules are evaluated to determine which public holidays actually apply.
+
+The engine combines those decisions into a single transparent and auditable result.

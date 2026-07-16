@@ -2,12 +2,14 @@ import { useState } from "react"
 import { layerDetails } from "../data/layerDetails"
 import VisualRegistry from "../visuals/VisualRegistry"
 import { motion, AnimatePresence } from "framer-motion"
-import { AlertTriangle, Wrench, ShieldCheck } from "lucide-react"
+import { AlertTriangle, Wrench, ShieldCheck, Play } from "lucide-react"
 import { trackJourneyEvent } from "../utils/visitorTracking"
+import ProjectVideoModal from "../components/ProjectVideoModal"
 
 export default function PhaseSection({ phase }) {
   const [selectedLayer, setSelectedLayer] = useState(null)
   const [showAdvancedLayers, setShowAdvancedLayers] = useState(false)
+  const [showDemoVideo, setShowDemoVideo] = useState(false)
 
   const selectedKey = selectedLayer ? `${phase.id}:${selectedLayer}` : null
   const selectedDetail = selectedKey ? layerDetails[selectedKey] : null
@@ -54,9 +56,9 @@ export default function PhaseSection({ phase }) {
 
       <div className="relative z-20">
         <div className="max-w-5xl space-y-6 text-[19px] leading-9 text-zinc-300">
-          {phase.description.split("\n\n").map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+        {phase.description.split("\n\n").map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+        ))}
         </div>
 
         {phase.layers && (
@@ -87,6 +89,35 @@ export default function PhaseSection({ phase }) {
 
         {phase.engineeringHighlights && (
           <EngineeringHighlights highlights={phase.engineeringHighlights} />
+        )}
+
+        {phase.demoVideo && (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              data-track
+              data-track-label={`${phase.title} - ${phase.demoVideo.buttonLabel} clicked`}
+              onClick={() => {
+                setShowDemoVideo(true)
+                trackJourneyEvent("cta_click", {
+                  label: `${phase.title} - ${phase.demoVideo.buttonLabel}`,
+                })
+              }}
+              className="group inline-flex items-center gap-3 rounded-2xl border border-cyan-400/30 bg-cyan-500/10 px-8 py-4 text-sm font-black uppercase tracking-[0.28em] text-cyan-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300 hover:bg-cyan-500/20 hover:shadow-[0_0_40px_rgba(34,211,238,0.15)]"
+            >
+              <Play className="h-4 w-4 fill-current" />
+              {phase.demoVideo.buttonLabel}
+            </button>
+          </div>
+        )}
+
+        {phase.demoVideo && (
+          <ProjectVideoModal
+            isOpen={showDemoVideo}
+            onClose={() => setShowDemoVideo(false)}
+            src={phase.demoVideo.src}
+            title={phase.demoVideo.title}
+          />
         )}
 
         {phase.advancedLayers && (

@@ -1,0 +1,15 @@
+The Operational Intelligence Copilot transforms operational datasets into executive-level insights through deterministic analytics and governed AI.
+
+After a dataset is loaded, the platform automatically profiles its structure, identifying available dimensions, measures and temporal information before any analysis begins.
+
+Users can then ask operational questions using natural language. The platform interprets the request, selects the appropriate analytical strategy and begins building an evidence-based response.
+
+Every investigation starts with an executive summary, presenting the direct answer, business impact and recommended actions. Rather than overwhelming users with raw data, the platform immediately communicates the most important operational insight.
+
+The Findings tab then explains the reasoning behind those conclusions, presenting the supporting analytical findings, executive assessment and recommended follow-up investigations. These guided investigations help users drill deeper into emerging issues instead of repeatedly starting from scratch.
+
+Every conclusion remains fully transparent through the Audit and Verification view. The platform records the analytical pathway, selected tools, inferred metrics and supporting evidence, allowing every recommendation to be traced back to the deterministic reasoning pipeline.
+
+Suggested follow-up investigations can be launched with a single click, allowing users to explore related questions while maintaining the same evidence-based analytical workflow.
+
+The result is an Operational Intelligence platform that combines deterministic reasoning, executive decision support and governed AI to deliver transparent, explainable and trustworthy operational insights.

@@ -1,0 +1,7 @@
+The platform begins by organising operational data into a consistent client structure, allowing multiple datasets to be validated and processed together.
+
+The implementation is intentionally modular. Independent components handle ingestion, diagnostics and reporting, while reusable execution scripts orchestrate the complete pipeline.
+
+This architecture also allows individual diagnostic domains to run independently. Organisations can execute targeted reviews, such as Leave or Termination diagnostics, or combine multiple domains into a comprehensive operational assessment.
+
+Every execution produces a structured collection of outputs, ranging from detailed module findings through to executive reports designed for governance and operational review.

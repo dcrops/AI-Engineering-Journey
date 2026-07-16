@@ -2,17 +2,19 @@ export const phases = [
   {
     id: "01",
     label: "THE BEGINNING",
-    title: "How Chase Risk & Compliance came to being.",
+    title: "How the Journey Began",
     trackingLabel: "Origin story section opened",
-    description: `The project began when I was asked to help investigate a public holiday entitlement challenge affecting a major Australian banking environment.
+    description: `
+My AI engineering journey began when I was asked to investigate a complex public holiday entitlement challenge affecting a major Australian banking environment.
 
-What started as a small side project eventually became Chase Risk & Compliance (CRC), a company I founded to explore operational risk, governance and AI-driven decision support systems.
+The challenge wasn't just technical. Errors could result in significant compliance risk and financial penalties.
 
-The projects throughout this portfolio were designed and built by me as part of that journey.
+As I explored the problem, I realised it wasn't simply a payroll issue. It was an engineering challenge involving operational risk, governance and transparent decision-making.
 
-The bank wanted a way to track public holiday entitlement as when banks are audited they can be fined millions of dollars for this issue and similar ones like it.
+As the project expanded beyond its original scope, I created Chase Risk & Compliance (CRC) as the umbrella under which I could continue developing increasingly capable decision-support systems.
 
-I was intrigued and looked into the problem...`,
+Each project builds on the previous one, progressing from deterministic rule engines and governance platforms through retrieval-augmented AI and, ultimately, intelligent operational copilots.
+`,
   },
   {
     id: "02",
@@ -34,6 +36,11 @@ I was intrigued and looked into the problem...`,
       ["8", "Australian Jurisdictions"],
       ["7", "Governance Status Codes"],
     ],
+    demoVideo: {
+      src: "/videos/public-holiday-demo.mp4",
+      title: "Public Holiday Entitlements App",
+      buttonLabel: "Watch Engineering Demo",
+    },
   },
   {
     id: "03",
@@ -62,6 +69,11 @@ The platform evolved from a single entitlement workflow into a broader governanc
       ["10", "Executive Reports"],
       ["78", "Automated Tests"],
     ],
+    demoVideo: {
+      src: "/videos/payroll-final.mp4",
+      title: "Payroll Diagnostics Engine",
+      buttonLabel: "Watch Engineering Demo",
+    },
   },
   {
     id: "04",
@@ -117,6 +129,11 @@ This was especially relevant for organisations without dedicated AI engineering 
       ["4", "Orchestration Intents"],
       ["4", "Chunking Strategies"],
     ],
+    demoVideo: {
+      src: "/videos/rag-demo.mp4",
+      title: "Document Intelligence RAG System",
+      buttonLabel: "Watch Engineering Demo",
+    },
   },
   {
     id: "05",
@@ -160,5 +177,10 @@ This became the Operational Intelligence Platform — a deterministic-first anal
       ["18", "Engineering Components"],
       ["21", "Production Features"],
     ],
+    demoVideo: {
+      src: "/videos/ops-demo.mp4",
+      title: "Operational Intelligence Platform",
+      buttonLabel: "Watch Engineering Demo",
+    },
   },
 ]

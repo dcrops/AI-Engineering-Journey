@@ -1,0 +1,1 @@
+This project allowed me to engineer every stage of a modern Retrieval-Augmented Generation platform, from document ingestion and vector indexing through to orchestration, grounded generation, telemetry and evaluation. More importantly, it reinforced that building trustworthy AI requires far more than simply connecting a language model to a document store.

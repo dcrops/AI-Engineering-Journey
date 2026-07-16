@@ -1,0 +1,11 @@
+Technical diagnostics only create value when they're presented in a way that supports informed decision making.
+
+Rather than exposing raw system output, the reporting layer transforms structured findings into executive-ready reports designed for operational review, governance activities and compliance investigations.
+
+Findings are prioritised by severity, grouped by diagnostic domain, and summarised to give stakeholders an immediate understanding of where the greatest operational risks exist.
+
+Each module contributes its own evidence-backed analysis, while detailed findings remain fully traceable to the underlying diagnostics, ensuring every recommendation can be understood, reviewed and verified.
+
+The reports don't attempt to replace human judgement. Instead, they provide structured evidence that helps organisations investigate issues earlier, prioritise remediation efforts and strengthen payroll governance over time.
+
+By separating diagnostics from reporting, the platform delivers consistent, explainable outputs that are suitable for both technical teams and executive stakeholders.

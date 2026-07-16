@@ -1,0 +1,17 @@
+Building a trustworthy RAG platform begins long before a question is ever asked. The first step is creating an isolated knowledge base for each client.
+
+Each client maintains its own document collection, embeddings and retrieval index, ensuring knowledge remains logically separated across organisations.
+
+Documents are then uploaded and prepared for processing. During ingestion, the platform extracts text, captures metadata and performs readiness checks before indexing begins.
+
+The content is intelligently chunked, converted into vector embeddings and stored within the vector database, making every document semantically searchable.
+
+Once indexing is complete, users can query the knowledge base using natural language rather than searching through individual documents.
+
+The orchestration layer retrieves the most relevant context before the language model generates a response grounded in the retrieved evidence.
+
+Every response includes engineering diagnostics alongside the answer itself. Confidence scoring, grounding validation and the retrieved context help explain how the answer was produced, rather than presenting the AI as a black box.
+
+Behind the scenes, the platform records the detected intent, selected retrieval strategy and execution timings for every request. This observability allows retrieval behaviour to be analysed, evaluated and continuously improved as the system evolves.
+
+Finally, every response is fully traceable back to the original source material, allowing users to verify conclusions against the documents from which they were derived.

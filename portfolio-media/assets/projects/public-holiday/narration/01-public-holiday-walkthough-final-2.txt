@@ -1,0 +1,21 @@
+Paying employees correctly for public holidays sounds straightforward, but the applicable entitlement depends on much more than an employee's state.
+
+This application evaluates both office and home work locations independently to determine which public holiday calendar applies.
+
+In this example, the office location qualifies for thirteen public holidays, while the home location qualifies for fifteen, demonstrating how regional rules can produce different payroll outcomes for different work locations.
+
+Each address is resolved into geographic coordinates and matched against Australian Bureau of Statistics local government boundaries before the relevant holiday rules are applied.
+
+Every result includes the applicable public holidays, the confidence of the geographic match and a complete audit trail, making every decision transparent and easy to validate.
+
+While evaluating a single employee is useful for investigating individual cases, payroll teams often need to assess an entire workforce.
+
+The same decision engine can therefore be applied to batch processing, where every employee is evaluated independently using the same geographic resolution and holiday rule evaluation pipeline.
+
+Rather than returning technical results alone, the application also generates a professional compliance report designed for operational review and audit activities.
+
+An executive summary highlights the overall findings, while supporting sections explain the review methodology, applicable public holiday calendars and the severity of any identified issues.
+
+Records requiring attention are prioritised using risk-based classifications, with detailed evidence provided for every finding, including the employee, resolved location, applicable public holidays and the reasoning behind the result.
+
+By combining executive summaries with detailed supporting evidence, the report allows payroll teams to understand not only what was identified, but why each conclusion was reached, creating a transparent and fully auditable review process.

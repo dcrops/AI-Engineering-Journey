@@ -1,0 +1,11 @@
+Modern language models are incredibly capable, but without access to reliable organisational knowledge they can still produce inaccurate or unsupported answers.
+
+This project represents the next stage of my AI Engineering journey, moving beyond deterministic analytics into modern Retrieval-Augmented Generation and explainable AI systems.
+
+Rather than building another generic chatbot, the objective was to engineer a trustworthy document intelligence platform designed for real organisational knowledge retrieval.
+
+Every question follows a structured retrieval pipeline. Documents are ingested, intelligently chunked and converted into vector embeddings before retrieval identifies the most relevant evidence. That context is then provided to the language model, allowing responses to remain grounded in the underlying source material rather than relying solely on the model's internal knowledge.
+
+The platform combines thirteen reusable RAG components, four orchestration intents, four chunking strategies and a comprehensive evaluation suite, demonstrating an engineering approach that extends well beyond a simple AI interface.
+
+Beyond retrieval itself, the project explores the wider engineering challenges of production AI systems, including orchestration, observability, telemetry, evaluation, API architecture and deployment. The result is an explainable Retrieval-Augmented Generation platform designed to demonstrate the engineering principles behind trustworthy enterprise AI.

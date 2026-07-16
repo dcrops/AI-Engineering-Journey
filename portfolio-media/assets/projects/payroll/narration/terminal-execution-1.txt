@@ -1,0 +1,7 @@
+Once configured, the platform orchestrates the complete diagnostics pipeline through a series of reusable execution scripts.
+
+Operational data is validated before independent diagnostic modules execute across each governance domain, producing structured, evidence-backed findings throughout the process.
+
+Because every module operates independently, organisations can execute targeted reviews or combine multiple domains into a single operational assessment.
+
+The resulting findings are automatically consolidated, ready for executive reporting and investigation.

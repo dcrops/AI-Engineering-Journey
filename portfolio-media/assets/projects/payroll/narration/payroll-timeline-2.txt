@@ -1,0 +1,13 @@
+Payroll systems are excellent at processing transactions. But they're rarely designed to identify hidden operational risks before they become audits, employee disputes, or compliance investigations.
+
+I built the Payroll Diagnostics Engine as an independent operational diagnostics platform that sits above existing payroll and HR systems.
+
+Rather than replacing an existing payroll platform, its role is to independently analyse operational data, identify potential risks, and produce evidence-backed findings that support further investigation.
+
+The engineering challenge was to move beyond simple reporting. Payroll systems can tell you what happened, but they rarely explain whether the underlying data is complete, consistent, or indicative of a governance issue.
+
+To address that, I designed the platform around a layered architecture. Operational datasets are first ingested, validated, and standardised before any diagnostics begin.
+
+The core of the platform is a modular rule engine. Each diagnostic domain executes independently, analysing a different aspect of operational risk before contributing evidence to a unified assessment.
+
+Those findings are then consolidated, classified by severity, and transformed into executive-ready reports that help organisations investigate issues before they become larger operational or compliance problems.
