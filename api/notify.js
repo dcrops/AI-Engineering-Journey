@@ -7,6 +7,7 @@ const ALLOWED_EVENT_TYPES = new Set([
     "video_started",
     "video_completed",
     "high_engagement",
+    "engagement_summary",
   ]);
   
   function safeText(value, maxLength = 300) {
@@ -77,17 +78,22 @@ const ALLOWED_EVENT_TYPES = new Set([
         return res.status(400).json({ ok: false, error: "Unsupported event type" });
       }
       
-      const isHighEngagementEvent = eventType === "high_engagement";
+      const isEngagementEvent =
+        eventType === "high_engagement" ||
+        eventType === "engagement_summary";
     
       const isVideoEvent =
         eventType === "video_started" || eventType === "video_completed";
 
-      const discordPayload = isHighEngagementEvent
+      const discordPayload = isEngagementEvent
         ? {
             username: "Journey Portfolio Bot",
             embeds: [
               {
-                title: "🔥 High Engagement Visitor",
+                title:
+                  eventType === "high_engagement"
+                    ? "🔥 High Engagement Visitor Detected"
+                    : "📊 Engagement Session Summary",
                 color: 16753920,
                 fields: [
                   {

@@ -4,10 +4,13 @@ const TIME_MILESTONES = [15, 30, 60, 120];
 const SCROLL_MILESTONES = [25, 50, 75, 90];
 const VISITOR_SEEN_KEY = "portfolio_visitor_seen";
 const HIGH_ENGAGEMENT_THRESHOLD = 8;
+const ENGAGEMENT_SUMMARY_DELAY_MS = 60_000;
 const sessionStartedAt = Date.now();
 
 let engagementScore = 0;
 let highEngagementNotified = false;
+let engagementSummaryTimer;
+let lastSummaryActivityCount = 0;
 
 const scoredActionsThisSession = new Set();
 const engagementActivities = [];
@@ -149,9 +152,39 @@ function getEngagementDetails(eventType, params = {}) {
   return null;
 }
 
-function recordEngagement(eventType, params = {}) {
-  if (highEngagementNotified) return;
+function scheduleEngagementSummary() {
+  if (!highEngagementNotified) return;
 
+  window.clearTimeout(engagementSummaryTimer);
+
+  engagementSummaryTimer = window.setTimeout(() => {
+    if (engagementActivities.length === lastSummaryActivityCount) return;
+
+    lastSummaryActivityCount = engagementActivities.length;
+
+    const sessionDurationSeconds = Math.round(
+      (Date.now() - sessionStartedAt) / 1000
+    );
+
+    trackGA("engagement_summary", {
+      event_category: "journey_portfolio",
+      engagement_score: engagementScore,
+      session_duration_seconds: sessionDurationSeconds,
+      activity_count: engagementActivities.length,
+    });
+
+    notifyDiscord({
+      eventType: "engagement_summary",
+      label: "Engagement session summary",
+      value: engagementScore,
+      engagementScore,
+      sessionDurationSeconds,
+      activities: [...engagementActivities],
+    });
+  }, ENGAGEMENT_SUMMARY_DELAY_MS);
+}
+
+function recordEngagement(eventType, params = {}) {
   const details = getEngagementDetails(eventType, params);
 
   if (!details || scoredActionsThisSession.has(details.key)) return;
@@ -160,28 +193,33 @@ function recordEngagement(eventType, params = {}) {
   engagementScore += details.points;
   engagementActivities.push(details.activity);
 
-  if (engagementScore < HIGH_ENGAGEMENT_THRESHOLD) return;
+  if (
+    engagementScore >= HIGH_ENGAGEMENT_THRESHOLD &&
+    !highEngagementNotified
+  ) {
+    highEngagementNotified = true;
 
-  highEngagementNotified = true;
+    const sessionDurationSeconds = Math.round(
+      (Date.now() - sessionStartedAt) / 1000
+    );
 
-  const sessionDurationSeconds = Math.round(
-    (Date.now() - sessionStartedAt) / 1000
-  );
+    trackGA("high_engagement", {
+      event_category: "journey_portfolio",
+      engagement_score: engagementScore,
+      session_duration_seconds: sessionDurationSeconds,
+    });
 
-  trackGA("high_engagement", {
-    event_category: "journey_portfolio",
-    engagement_score: engagementScore,
-    session_duration_seconds: sessionDurationSeconds,
-  });
+    notifyDiscord({
+      eventType: "high_engagement",
+      label: "High engagement visitor",
+      value: engagementScore,
+      engagementScore,
+      sessionDurationSeconds,
+      activities: [...engagementActivities],
+    });
+  }
 
-  notifyDiscord({
-    eventType: "high_engagement",
-    label: "High engagement visitor",
-    value: engagementScore,
-    engagementScore,
-    sessionDurationSeconds,
-    activities: engagementActivities,
-  });
+  scheduleEngagementSummary();
 }
 
 function shouldNotify(eventType, value, label = "") {
@@ -301,5 +339,6 @@ export function initVisitorTracking() {
   return () => {
     window.removeEventListener("scroll", handleScroll);
     document.removeEventListener("click", handleClick);
+    window.clearTimeout(engagementSummaryTimer);
   };
 }
