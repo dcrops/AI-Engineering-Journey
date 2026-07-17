@@ -6,6 +6,7 @@ const ALLOWED_EVENT_TYPES = new Set([
     "project_section_viewed",
     "video_started",
     "video_completed",
+    "high_engagement",
   ]);
   
   function safeText(value, maxLength = 300) {
@@ -59,15 +60,80 @@ const ALLOWED_EVENT_TYPES = new Set([
       const completion = safeText(body.completion, 40);
       const visitorType = safeText(body.visitorType, 40);
       const referrerSource = safeText(body.referrerSource, 80);
+      const engagementScore = safeText(body.engagementScore, 20);
+      const sessionDurationSeconds = safeText(
+        body.sessionDurationSeconds,
+        20
+      );
+
+      const activities = Array.isArray(body.activities)
+        ? body.activities
+            .slice(0, 12)
+            .map((activity) => safeText(activity, 180))
+            .filter(Boolean)
+        : [];
   
       if (!ALLOWED_EVENT_TYPES.has(eventType)) {
         return res.status(400).json({ ok: false, error: "Unsupported event type" });
       }
-  
+      
+      const isHighEngagementEvent = eventType === "high_engagement";
+    
       const isVideoEvent =
         eventType === "video_started" || eventType === "video_completed";
 
-      const discordPayload = isVideoEvent
+      const discordPayload = isHighEngagementEvent
+        ? {
+            username: "Journey Portfolio Bot",
+            embeds: [
+              {
+                title: "🔥 High Engagement Visitor",
+                color: 16753920,
+                fields: [
+                  {
+                    name: "Visitor",
+                    value: visitorType || "Unknown",
+                    inline: true,
+                  },
+                  {
+                    name: "Referrer",
+                    value:
+                      referrerSource ||
+                      referrer ||
+                      "Direct / unknown",
+                    inline: true,
+                  },
+                  {
+                    name: "Score",
+                    value: engagementScore || value || "Unknown",
+                    inline: true,
+                  },
+                  {
+                    name: "Session",
+                    value: sessionDurationSeconds
+                      ? `${Math.floor(
+                          Number(sessionDurationSeconds) / 60
+                        )}m ${Number(sessionDurationSeconds) % 60}s`
+                      : "Unknown",
+                    inline: true,
+                  },
+                  {
+                    name: "Activity",
+                    value:
+                      activities.length > 0
+                        ? activities
+                            .map((activity) => `✓ ${activity}`)
+                            .join("\n")
+                            .slice(0, 1024)
+                        : "No activity details available",
+                    inline: false,
+                  },
+                ],
+                timestamp: new Date().toISOString(),
+              },
+            ],
+          }
+        : isVideoEvent
         ? {
             username: "Journey Portfolio Bot",
             embeds: [

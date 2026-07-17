@@ -3,6 +3,14 @@ import ReactGA from "react-ga4";
 const TIME_MILESTONES = [15, 30, 60, 120];
 const SCROLL_MILESTONES = [25, 50, 75, 90];
 const VISITOR_SEEN_KEY = "portfolio_visitor_seen";
+const HIGH_ENGAGEMENT_THRESHOLD = 8;
+const sessionStartedAt = Date.now();
+
+let engagementScore = 0;
+let highEngagementNotified = false;
+
+const scoredActionsThisSession = new Set();
+const engagementActivities = [];
 
 let visitorTypeThisSession;
 
@@ -63,6 +71,119 @@ async function notifyDiscord(payload) {
   }
 }
 
+function getEngagementDetails(eventType, params = {}) {
+  const label = String(params.label || "");
+  const normalisedLabel = label.toLowerCase();
+  const projectName = params.project_name || "Portfolio project";
+  const videoName = params.video_name || projectName;
+
+  if (eventType === "video_started") {
+    return {
+      points: 2,
+      key: `video_started:${projectName}:${videoName}`,
+      activity: `${projectName} video started`,
+    };
+  }
+
+  if (eventType === "video_50") {
+    return {
+      points: 1,
+      key: `video_50:${projectName}:${videoName}`,
+      activity: `${projectName} video reached 50%`,
+    };
+  }
+
+  if (eventType === "video_75") {
+    return {
+      points: 2,
+      key: `video_75:${projectName}:${videoName}`,
+      activity: `${projectName} video reached 75%`,
+    };
+  }
+
+  if (eventType === "video_completed") {
+    return {
+      points: 4,
+      key: `video_completed:${projectName}:${videoName}`,
+      activity: `${projectName} video completed`,
+    };
+  }
+
+  if (eventType === "time_on_page" && Number(params.value) === 120) {
+    return {
+      points: 1,
+      key: "time_on_page:120",
+      activity: "Spent at least 2 minutes on the portfolio",
+    };
+  }
+
+  if (eventType === "cta_click") {
+    if (normalisedLabel.includes("github")) {
+      return {
+        points: 4,
+        key: `github:${label}`,
+        activity: `GitHub clicked: ${label}`,
+      };
+    }
+
+    if (
+      normalisedLabel.includes("resume") ||
+      normalisedLabel.includes("cv")
+    ) {
+      return {
+        points: 5,
+        key: `resume:${label}`,
+        activity: `Resume/CV accessed: ${label}`,
+      };
+    }
+
+    if (normalisedLabel.includes("linkedin")) {
+      return {
+        points: 2,
+        key: `linkedin:${label}`,
+        activity: `LinkedIn clicked: ${label}`,
+      };
+    }
+  }
+
+  return null;
+}
+
+function recordEngagement(eventType, params = {}) {
+  if (highEngagementNotified) return;
+
+  const details = getEngagementDetails(eventType, params);
+
+  if (!details || scoredActionsThisSession.has(details.key)) return;
+
+  scoredActionsThisSession.add(details.key);
+  engagementScore += details.points;
+  engagementActivities.push(details.activity);
+
+  if (engagementScore < HIGH_ENGAGEMENT_THRESHOLD) return;
+
+  highEngagementNotified = true;
+
+  const sessionDurationSeconds = Math.round(
+    (Date.now() - sessionStartedAt) / 1000
+  );
+
+  trackGA("high_engagement", {
+    event_category: "journey_portfolio",
+    engagement_score: engagementScore,
+    session_duration_seconds: sessionDurationSeconds,
+  });
+
+  notifyDiscord({
+    eventType: "high_engagement",
+    label: "High engagement visitor",
+    value: engagementScore,
+    engagementScore,
+    sessionDurationSeconds,
+    activities: engagementActivities,
+  });
+}
+
 function shouldNotify(eventType, value, label = "") {
     const normalisedLabel = String(label).toLowerCase();
   
@@ -118,6 +239,8 @@ export function trackJourneyEvent(eventType, params = {}) {
       completion: params.completion,
     });
   }
+
+  recordEngagement(eventType, params);
 }
 
 export function initVisitorTracking() {

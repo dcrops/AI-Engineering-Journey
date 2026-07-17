@@ -4,6 +4,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 import { trackJourneyEvent } from "../utils/visitorTracking"
 
+const VIDEO_PROGRESS_MILESTONES = [
+  [25, "video_25"],
+  [50, "video_50"],
+  [75, "video_75"],
+]
+
 export default function ProjectVideoModal({
   isOpen,
   onClose,
@@ -14,6 +20,7 @@ export default function ProjectVideoModal({
   const videoRef = useRef(null)
   const startedRef = useRef(false)
   const completedRef = useRef(false)
+  const progressMilestonesRef = useRef(new Set())
 
   useEffect(() => {
     if (!isOpen) return
@@ -43,6 +50,7 @@ export default function ProjectVideoModal({
       // A new modal opening counts as a new viewing session.
       startedRef.current = false
       completedRef.current = false
+      progressMilestonesRef.current.clear()
       return
     }
 
@@ -76,13 +84,39 @@ export default function ProjectVideoModal({
         completion: 100,
       })
     }
-
+    const handleTimeUpdate = () => {
+      if (!video.duration) return
+    
+      const progress = (video.currentTime / video.duration) * 100
+    
+      VIDEO_PROGRESS_MILESTONES
+    
+      VIDEO_PROGRESS_MILESTONES.forEach(([threshold, eventName]) => {
+        if (
+          progress >= threshold &&
+          !progressMilestonesRef.current.has(threshold)
+        ) {
+          progressMilestonesRef.current.add(threshold)
+    
+          trackJourneyEvent(eventName, {
+            label: `${projectName} | ${title}`,
+            value: threshold,
+            project_name: projectName,
+            video_name: title,
+            video_duration: getVideoDuration(),
+          })
+        }
+      })
+    }
+    
     video.addEventListener("playing", handlePlaying)
     video.addEventListener("ended", handleEnded)
+    video.addEventListener("timeupdate", handleTimeUpdate)
 
     return () => {
       video.removeEventListener("playing", handlePlaying)
       video.removeEventListener("ended", handleEnded)
+      video.removeEventListener("timeupdate", handleTimeUpdate)
     }
   }, [isOpen, projectName, title, src])
 
