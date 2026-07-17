@@ -9,7 +9,10 @@ export default function ProjectDemonstrationsSection() {
   const demonstrations = getProjectDemonstrations()
 
   function handleWatch(item) {
-    setActiveVideo(item.demoVideo)
+    setActiveVideo({
+        ...item.demoVideo,
+        projectName: item.title,
+      })
     trackJourneyEvent("cta_click", {
       label: `Project Demonstrations - ${item.buttonLabel}`,
     })
@@ -81,6 +84,7 @@ export default function ProjectDemonstrationsSection() {
           onClose={handleClose}
           src={activeVideo.src}
           title={activeVideo.title}
+          projectName={activeVideo.projectName}
         />
       )}
     </section>

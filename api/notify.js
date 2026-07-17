@@ -4,6 +4,8 @@ const ALLOWED_EVENT_TYPES = new Set([
     "scroll_depth",
     "cta_click",
     "project_section_viewed",
+    "video_started",
+    "video_completed",
   ]);
   
   function safeText(value, maxLength = 300) {
@@ -51,28 +53,97 @@ const ALLOWED_EVENT_TYPES = new Set([
       const pageTitle = safeText(body.pageTitle, 160);
       const referrer = getReferrerLabel(safeText(body.referrer, 300));
       const value = safeText(body.value, 80);
+      const projectName = safeText(body.projectName, 160);
+      const videoName = safeText(body.videoName, 160);
+      const videoDuration = safeText(body.videoDuration, 40);
+      const completion = safeText(body.completion, 40);
+      const visitorType = safeText(body.visitorType, 40);
+      const referrerSource = safeText(body.referrerSource, 80);
   
       if (!ALLOWED_EVENT_TYPES.has(eventType)) {
         return res.status(400).json({ ok: false, error: "Unsupported event type" });
       }
   
-      const discordPayload = {
-        username: "Journey Portfolio Bot",
-        embeds: [
-          {
-            title: "Portfolio visitor activity",
-            description: `**${eventType}**${label ? ` — ${label}` : ""}`,
-            color: 5814783,
-            fields: [
-              { name: "Page", value: pageTitle || "Unknown", inline: true },
-              { name: "Path", value: path || "/", inline: true },
-              { name: "Value", value: value || "n/a", inline: true },
-              { name: "Referrer", value: referrer || "Direct / unknown", inline: false },
+      const isVideoEvent =
+        eventType === "video_started" || eventType === "video_completed";
+
+      const discordPayload = isVideoEvent
+        ? {
+            username: "Journey Portfolio Bot",
+            embeds: [
+              {
+                title:
+                  eventType === "video_started"
+                    ? "🎥 Portfolio Video Started"
+                    : "✅ Portfolio Video Completed",
+                color: eventType === "video_started" ? 5814783 : 5763719,
+                fields: [
+                  {
+                    name: "Project",
+                    value: projectName || "Unknown project",
+                    inline: false,
+                  },
+                  {
+                    name: "Video",
+                    value: videoName || "Unknown video",
+                    inline: false,
+                  },
+                  ...(eventType === "video_started"
+                    ? [
+                        {
+                          name: "Visitor",
+                          value: visitorType || "Unknown",
+                          inline: true,
+                        },
+                        {
+                          name: "Referrer",
+                          value:
+                            referrerSource ||
+                            referrer ||
+                            "Direct / unknown",
+                          inline: true,
+                        },
+                      ]
+                    : [
+                        {
+                          name: "Completion",
+                          value: `${completion || "100"}%`,
+                          inline: true,
+                        },
+                        {
+                          name: "Duration",
+                          value: videoDuration
+                            ? `${videoDuration} seconds`
+                            : "Unknown",
+                          inline: true,
+                        },
+                      ]),
+                ],
+                timestamp: new Date().toISOString(),
+              },
             ],
-            timestamp: new Date().toISOString(),
-          },
-        ],
-      };
+          }
+        : {
+            username: "Journey Portfolio Bot",
+            embeds: [
+              {
+                title: "Portfolio visitor activity",
+                description: `**${eventType}**${label ? ` — ${label}` : ""}`,
+                color: 5814783,
+                fields: [
+                  { name: "Page", value: pageTitle || "Unknown", inline: true },
+                  { name: "Path", value: path || "/", inline: true },
+                  { name: "Value", value: value || "n/a", inline: true },
+                  {
+                    name: "Referrer",
+                    value: referrer || "Direct / unknown",
+                    inline: false,
+                  },
+                ],
+                timestamp: new Date().toISOString(),
+              },
+            ],
+          };
   
       const discordResponse = await fetch(webhookUrl, {
         method: "POST",

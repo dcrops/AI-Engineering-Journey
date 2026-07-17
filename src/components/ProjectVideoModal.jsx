@@ -2,9 +2,18 @@ import { useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
+import { trackJourneyEvent } from "../utils/visitorTracking"
 
-export default function ProjectVideoModal({ isOpen, onClose, src, title }) {
+export default function ProjectVideoModal({
+  isOpen,
+  onClose,
+  src,
+  title,
+  projectName,
+}) {
   const videoRef = useRef(null)
+  const startedRef = useRef(false)
+  const completedRef = useRef(false)
 
   useEffect(() => {
     if (!isOpen) return
@@ -23,14 +32,59 @@ export default function ProjectVideoModal({ isOpen, onClose, src, title }) {
   }, [isOpen, onClose])
 
   useEffect(() => {
-    if (isOpen) return
-
     const video = videoRef.current
-    if (video) {
-      video.pause()
-      video.currentTime = 0
+
+    if (!isOpen) {
+      if (video) {
+        video.pause()
+        video.currentTime = 0
+      }
+
+      // A new modal opening counts as a new viewing session.
+      startedRef.current = false
+      completedRef.current = false
+      return
     }
-  }, [isOpen])
+
+    if (!video) return
+
+    const getVideoDuration = () =>
+      Number.isFinite(video.duration) ? Math.round(video.duration) : 0
+
+    const handlePlaying = () => {
+      if (startedRef.current) return
+      startedRef.current = true
+
+      trackJourneyEvent("video_started", {
+        label: `${projectName} | ${title}`,
+        project_name: projectName,
+        video_name: title,
+        video_duration: getVideoDuration(),
+      })
+    }
+
+    const handleEnded = () => {
+      if (completedRef.current) return
+      completedRef.current = true
+
+      trackJourneyEvent("video_completed", {
+        label: `${projectName} | ${title}`,
+        value: 100,
+        project_name: projectName,
+        video_name: title,
+        video_duration: getVideoDuration(),
+        completion: 100,
+      })
+    }
+
+    video.addEventListener("playing", handlePlaying)
+    video.addEventListener("ended", handleEnded)
+
+    return () => {
+      video.removeEventListener("playing", handlePlaying)
+      video.removeEventListener("ended", handleEnded)
+    }
+  }, [isOpen, projectName, title, src])
 
   function handleClose() {
     videoRef.current?.pause()

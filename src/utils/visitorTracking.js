@@ -2,6 +2,9 @@ import ReactGA from "react-ga4";
 
 const TIME_MILESTONES = [15, 30, 60, 120];
 const SCROLL_MILESTONES = [25, 50, 75, 90];
+const VISITOR_SEEN_KEY = "portfolio_visitor_seen";
+
+let visitorTypeThisSession;
 
 const notifiedThisSession = new Set();
 
@@ -13,8 +16,32 @@ function trackGA(eventName, params = {}) {
   }
 }
 
+function getVisitorType() {
+  if (visitorTypeThisSession) return visitorTypeThisSession;
+
+  try {
+    const hasVisitedBefore =
+      window.localStorage.getItem(VISITOR_SEEN_KEY) === "true";
+
+    visitorTypeThisSession = hasVisitedBefore ? "Returning" : "New";
+
+    window.localStorage.setItem(VISITOR_SEEN_KEY, "true");
+  } catch {
+    // Storage can be blocked by browser privacy settings.
+    visitorTypeThisSession = "Unknown";
+  }
+
+  return visitorTypeThisSession;
+}
+
 async function notifyDiscord(payload) {
-  const key = `${payload.eventType}:${payload.label || ""}:${payload.value || ""}`;
+  const key = [
+      payload.eventType,
+      payload.projectName || "",
+      payload.videoName || "",
+      payload.label || "",
+      payload.value || "",
+    ].join(":");
 
   if (notifiedThisSession.has(key)) return;
   notifiedThisSession.add(key);
@@ -28,6 +55,7 @@ async function notifyDiscord(payload) {
         path: window.location.pathname,
         pageTitle: document.title,
         referrer: document.referrer,
+        visitorType: getVisitorType(),
       }),
     });
   } catch {
@@ -41,6 +69,10 @@ function shouldNotify(eventType, value, label = "") {
     if (eventType === "journey_visit") return true;
   
     if (eventType === "project_section_viewed") return false;
+
+    if (eventType === "video_started" || eventType === "video_completed") {
+      return true;
+    }
   
     if (eventType === "time_on_page") {
       return Number(value) >= 60;
@@ -80,6 +112,10 @@ export function trackJourneyEvent(eventType, params = {}) {
       eventType,
       label,
       value,
+      projectName: params.project_name,
+      videoName: params.video_name,
+      videoDuration: params.video_duration,
+      completion: params.completion,
     });
   }
 }

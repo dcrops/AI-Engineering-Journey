@@ -117,6 +117,7 @@ export default function PhaseSection({ phase }) {
             onClose={() => setShowDemoVideo(false)}
             src={phase.demoVideo.src}
             title={phase.demoVideo.title}
+            projectName={phase.title}
           />
         )}
 
