@@ -1,18 +1,17 @@
 import HeroSection from "./sections/HeroSection"
 import ProjectDemonstrationsSection from "./sections/ProjectDemonstrationsSection"
 import PhaseSection from "./sections/PhaseSection"
-import FutureProjectsSection from "./sections/FutureProjectsSection"
+import CicProjectSection from "./sections/CicProjectSection"
 import { phases } from "./data/phases"
-import { useEffect } from "react";
-import { initVisitorTracking } from "./utils/visitorTracking";
+import { useEffect } from "react"
+import { initVisitorTracking } from "./utils/visitorTracking"
 
 export default function App() {
-
   useEffect(() => {
-    const cleanup = initVisitorTracking();
+    const cleanup = initVisitorTracking()
 
-    return cleanup;
-  }, []);
+    return cleanup
+  }, [])
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -28,7 +27,7 @@ export default function App() {
             <PhaseSection key={phase.id} phase={phase} />
           ))}
 
-          <FutureProjectsSection />
+          <CicProjectSection />
         </div>
       </section>
     </main>

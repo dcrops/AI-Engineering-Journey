@@ -32,7 +32,7 @@ export default function ProjectDemonstrationsSection() {
         <p className="mx-auto mt-4 max-w-3xl text-[17px] leading-8 text-zinc-400">
           If you&apos;re short on time, start here.
           <br />
-          Each walkthrough is under 4 minutes and demonstrates a complete
+          Available walkthroughs are under 4 minutes and demonstrate a complete
           engineering project.
         </p>
       </div>
@@ -57,9 +57,9 @@ export default function ProjectDemonstrationsSection() {
                 </div>
               </div>
 
-              {item.comingSoon ? (
-                <div className="shrink-0 self-start rounded-xl border border-white/10 bg-white/[0.03] px-6 py-3.5 text-xs font-bold uppercase tracking-[0.28em] text-zinc-500 sm:self-center">
-                  Coming Soon
+              {item.demoPending ? (
+                <div className="shrink-0 self-start rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3.5 text-center text-[11px] font-bold uppercase tracking-[0.18em] text-zinc-400 sm:max-w-[16rem] sm:self-center">
+                  {item.statusLabel}
                 </div>
               ) : (
                 <button

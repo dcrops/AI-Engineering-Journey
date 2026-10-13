@@ -1,5 +1,5 @@
 import { phases } from "./phases"
-import { futureProjects } from "./futureProjects"
+import { cicProject } from "./cicProject"
 
 const demonstrationsOrder = [
   {
@@ -32,29 +32,33 @@ const demonstrationsOrder = [
   },
   {
     badge: "⑤",
-    futureProjectId: "06",
+    cicProjectId: "06",
     title: "Career Intelligence Copilot",
-    tagline: "Coming Soon",
-    comingSoon: true,
+    tagline: cicProject.subtitle,
+    statusLabel: "Working System — Demo Video Pending",
+    demoPending: true,
   },
 ]
 
 export function getProjectDemonstrations() {
-  return demonstrationsOrder.map((item) => {
-    if (item.comingSoon) {
-      const project = futureProjects.find((p) => p.id === item.futureProjectId)
+  return demonstrationsOrder
+    .map((item) => {
+      if (item.demoPending) {
+        return {
+          ...item,
+          title: cicProject.title,
+          tagline: item.tagline ?? cicProject.subtitle,
+          statusLabel: item.statusLabel ?? "Demo Video Pending",
+        }
+      }
+
+      const phase = phases.find((p) => p.id === item.phaseId)
+      if (!phase?.demoVideo) return null
+
       return {
         ...item,
-        title: project?.title ?? item.title,
+        demoVideo: phase.demoVideo,
       }
-    }
-
-    const phase = phases.find((p) => p.id === item.phaseId)
-    if (!phase?.demoVideo) return null
-
-    return {
-      ...item,
-      demoVideo: phase.demoVideo,
-    }
-  }).filter(Boolean)
+    })
+    .filter(Boolean)
 }
