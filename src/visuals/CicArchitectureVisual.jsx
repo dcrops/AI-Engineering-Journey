@@ -1,10 +1,19 @@
-import { ArrowRight, Bot, Cog, ShieldCheck } from "lucide-react"
+import {
+  ArrowRight,
+  Bot,
+  Scale,
+  ShieldCheck,
+  Library,
+  GitBranch,
+  CheckCircle2,
+  History,
+} from "lucide-react"
 
 const stages = [
   {
     id: "intake",
     label: "Job Intake",
-    mode: "deterministic",
+    mode: "rules",
     detail: "Email · URL · dedupe",
   },
   {
@@ -22,28 +31,44 @@ const stages = [
   {
     id: "strategy",
     label: "Application Strategy",
-    mode: "mixed",
+    mode: "combined",
     detail: "Select · constrain",
   },
   {
     id: "documents",
     label: "Document Generation",
-    mode: "mixed",
+    mode: "combined",
     detail: "Draft · validate · PDF",
   },
   {
     id: "review",
     label: "Human Review",
-    mode: "deterministic",
+    mode: "rules",
     detail: "Owner approval",
   },
 ]
 
 const controls = [
-  "Evidence & Provenance",
-  "Deterministic Orchestration",
-  "Validation & Testing",
-  "Auditability",
+  {
+    title: "Evidence & Provenance",
+    text: "Grounding generated claims in career evidence.",
+    icon: Library,
+  },
+  {
+    title: "Deterministic Orchestration",
+    text: "Explicit stage transitions, retries and approval checkpoints.",
+    icon: GitBranch,
+  },
+  {
+    title: "Validation & Testing",
+    text: "Output validation and regression protection.",
+    icon: CheckCircle2,
+  },
+  {
+    title: "Auditability",
+    text: "Inspectable execution records and decision history.",
+    icon: History,
+  },
 ]
 
 const modeStyles = {
@@ -52,15 +77,15 @@ const modeStyles = {
     badge: "border-cyan-400/40 bg-cyan-500/20 text-cyan-200",
     label: "AI",
   },
-  deterministic: {
+  rules: {
     chip: "border-violet-400/40 bg-violet-500/15 text-violet-100",
     badge: "border-violet-400/40 bg-violet-500/20 text-violet-200",
-    label: "SW",
+    label: "RULES",
   },
-  mixed: {
+  combined: {
     chip: "border-fuchsia-400/30 bg-fuchsia-500/10 text-fuchsia-100",
     badge: "border-fuchsia-400/40 bg-fuchsia-500/20 text-fuchsia-200",
-    label: "AI+SW",
+    label: "AI + RULES",
   },
 }
 
@@ -80,51 +105,57 @@ export default function CicArchitectureVisual() {
 
         <div className="flex flex-wrap gap-2">
           <Legend swatch="border-cyan-400/40 bg-cyan-500/20 text-cyan-200" icon={Bot}>
-            AI-assisted
+            AI — AI-assisted processing
           </Legend>
-          <Legend swatch="border-violet-400/40 bg-violet-500/20 text-violet-200" icon={Cog}>
-            Deterministic
+          <Legend swatch="border-violet-400/40 bg-violet-500/20 text-violet-200" icon={Scale}>
+            RULES — Deterministic software processing
           </Legend>
           <Legend
             swatch="border-fuchsia-400/40 bg-fuchsia-500/20 text-fuchsia-200"
             icon={ShieldCheck}
           >
-            Combined
+            AI + RULES — Combined AI and deterministic software
           </Legend>
         </div>
       </div>
 
-      <div className="mt-6 flex flex-col gap-3 lg:flex-row lg:items-stretch lg:gap-0">
+      <div className="mt-6 flex flex-col gap-2 lg:flex-row lg:items-stretch lg:gap-0">
         {stages.map((stage, index) => {
           const styles = modeStyles[stage.mode]
 
           return (
             <div key={stage.id} className="flex min-w-0 flex-1 items-stretch lg:flex-row">
               <div
-                className={`flex w-full flex-col justify-between rounded-2xl border px-3.5 py-4 ${styles.chip}`}
+                className={`flex w-full min-w-0 flex-col justify-between gap-3 rounded-2xl border px-3 py-3.5 ${styles.chip}`}
               >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="text-[10px] font-black uppercase leading-snug tracking-[0.14em]">
-                    {stage.label}
-                  </div>
+                <div className="flex min-w-0 flex-col gap-2.5">
                   <span
-                    className={`shrink-0 rounded-md border px-1.5 py-0.5 text-[9px] font-black tracking-[0.08em] ${styles.badge}`}
+                    className={`inline-flex w-fit max-w-full rounded-md border px-1.5 py-1 text-[9px] font-black uppercase leading-none tracking-[0.06em] ${styles.badge}`}
                   >
                     {styles.label}
                   </span>
+                  <div className="text-[10px] font-black uppercase leading-snug tracking-[0.12em]">
+                    {stage.label}
+                  </div>
                 </div>
-                <div className="mt-3 text-[11px] leading-4 text-zinc-400">
+                <div className="text-[11px] leading-4 text-zinc-400">
                   {stage.detail}
                 </div>
               </div>
 
               {index !== stages.length - 1 && (
                 <>
-                  <div className="flex items-center justify-center py-1 lg:hidden">
-                    <ArrowRight className="h-4 w-4 rotate-90 text-cyan-400/70" />
+                  <div
+                    className="flex shrink-0 items-center justify-center py-0.5 lg:hidden"
+                    aria-hidden="true"
+                  >
+                    <ArrowRight className="h-3.5 w-3.5 rotate-90 text-cyan-400/70" />
                   </div>
-                  <div className="hidden items-center px-1.5 lg:flex">
-                    <ArrowRight className="h-4 w-4 shrink-0 text-cyan-400/70" aria-hidden="true" />
+                  <div
+                    className="hidden w-4 shrink-0 items-center justify-center lg:flex"
+                    aria-hidden="true"
+                  >
+                    <ArrowRight className="h-3.5 w-3.5 text-cyan-400/70" />
                   </div>
                 </>
               )}
@@ -137,19 +168,35 @@ export default function CicArchitectureVisual() {
         <div className="text-[10px] font-black uppercase tracking-[0.28em] text-violet-200">
           Cross-Cutting Engineering Controls
         </div>
-        <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
-          {controls.map((control) => (
-            <div
-              key={control}
-              className="rounded-xl border border-violet-400/20 bg-black/30 px-3 py-2.5 text-center text-[11px] font-bold uppercase tracking-[0.14em] text-violet-100"
-            >
-              {control}
-            </div>
-          ))}
-        </div>
-        <p className="mt-3 text-xs leading-5 text-zinc-400">
-          These controls span the pipeline — they are not extra sequential stages.
+        <p className="mt-2 text-xs leading-5 text-zinc-400">
+          These controls span the workflow — they are not sequential processing stages.
         </p>
+
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {controls.map((control) => {
+            const Icon = control.icon
+            return (
+              <div
+                key={control.title}
+                className="rounded-xl border border-violet-400/20 bg-black/30 px-3.5 py-3 text-left"
+              >
+                <div className="flex items-start gap-2.5">
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-violet-400/25 bg-violet-500/15 text-violet-200">
+                    <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-[10px] font-black uppercase leading-snug tracking-[0.12em] text-violet-100">
+                      {control.title}
+                    </div>
+                    <p className="mt-1.5 text-[11px] leading-4 text-zinc-400">
+                      {control.text}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
@@ -158,10 +205,10 @@ export default function CicArchitectureVisual() {
 function Legend({ swatch, icon: Icon, children }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.14em] ${swatch}`}
+      className={`inline-flex max-w-full items-center gap-2 rounded-full border px-3 py-1.5 text-[9px] font-black uppercase leading-snug tracking-[0.1em] sm:text-[10px] sm:tracking-[0.12em] ${swatch}`}
     >
-      <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-      {children}
+      <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+      <span>{children}</span>
     </div>
   )
 }

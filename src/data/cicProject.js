@@ -16,10 +16,10 @@ LLMs handle language-heavy interpretation and drafting; deterministic software o
     "TRACKING & RELIABILITY",
   ],
   engineeringHighlights: [
-    ["Deterministic", "Orchestration"],
-    ["Evidence", "Provenance & Validation"],
-    ["Human", "Approval Gates"],
     ["2,500", "Automated Tests"],
+    ["18", "Implemented Requirements"],
+    ["9", "Workflow Stages"],
+    ["7", "Engineering Layers"],
   ],
   techStack: [
     "Python",
