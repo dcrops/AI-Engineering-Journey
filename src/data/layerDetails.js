@@ -1,3 +1,5 @@
+import { workflowLayerDetails } from "./workflowProjects"
+
 export const layerDetails = {
     "02:ADDRESS INPUT": {
       title: "Address Input",
@@ -559,7 +561,7 @@ export const layerDetails = {
     built:
       "We implemented structured telemetry logging capable of capturing orchestration decisions, retrieval traces, timing diagnostics, grounding checks and response outcomes.",
     mattered:
-      "Telemetry transformed the platform from a simple prototype into an observable AI system where retrieval quality and orchestration behaviour could be analysed empirically.",
+      "The local demonstration records orchestration decisions, retrieval traces, timings and grounding results for a request. The figures in the diagram are one sample, not live operational metrics.",
   },
   tags: ["REQUEST LOGGING", "RETRIEVAL TRACES", "TIMING DIAGNOSTICS", "GROUNDEDNESS TRACKING"],
   visual: "telemetry",
@@ -605,9 +607,9 @@ export const layerDetails = {
     problem:
       "Many AI prototypes remain isolated development experiments without realistic deployment architecture, API infrastructure or operational packaging.",
     built:
-      "We implemented a deployable architecture using FastAPI, Streamlit, Docker Compose and API-key authentication to support operational workflows and service-based interaction.",
+      "We implemented a deployable architecture using FastAPI, Streamlit, Docker Compose and API-key authentication so the local demonstration can run as separate services.",
     mattered:
-      "Deployment engineering transformed the platform from a local experimentation environment into a more realistic operational AI platform architecture.",
+      "The local demonstration packages FastAPI, Streamlit and ChromaDB with Docker Compose and API-key checks. Counts and status marks in the diagram are sample or illustrative, not commercial clients or production health.",
   },
   tags: ["FASTAPI", "STREAMLIT UI", "DOCKER COMPOSE", "API AUTHENTICATION"],
   visual: "deployment",
@@ -965,4 +967,5 @@ export const layerDetails = {
   visual: "llm-fallbacks",
   actions: [],
 },
+  ...workflowLayerDetails,
 }

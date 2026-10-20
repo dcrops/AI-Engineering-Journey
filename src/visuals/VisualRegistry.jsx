@@ -41,6 +41,22 @@ import GoldenDatasetsVisual from "./GoldenDatasetsVisual"
 import GoldenUserJourneysVisual from "./GoldenUserJourneysVisual"
 import RegressionTestingVisual from "./RegressionTestingVisual"
 import LlmFallbacksVisual from "./LlmFallbacksVisual"
+import NorthstarArchitectureVisual from "./NorthstarArchitectureVisual"
+import NorthstarLayerVisual from "./NorthstarLayerVisual"
+import AgenticArchitectureVisual from "./AgenticArchitectureVisual"
+import AgenticLayerVisual from "./AgenticLayerVisual"
+
+function northstarLayer(workflowId) {
+  return function NorthstarWorkflowVisual() {
+    return <NorthstarLayerVisual workflowId={workflowId} />
+  }
+}
+
+function agenticLayer(layerId) {
+  return function AgenticWorkflowVisual() {
+    return <AgenticLayerVisual layerId={layerId} />
+  }
+}
 
 const visualMap = {
   "holiday-input": HolidayInputVisual,
@@ -86,6 +102,16 @@ const visualMap = {
   "golden-user-journeys": GoldenUserJourneysVisual,
   "regression-testing": RegressionTestingVisual,
   "llm-fallbacks": LlmFallbacksVisual,
+  "northstar-architecture": NorthstarArchitectureVisual,
+  "northstar-support": northstarLayer("support"),
+  "northstar-invoice": northstarLayer("invoice"),
+  "northstar-revenue": northstarLayer("revenue"),
+  "northstar-travel": northstarLayer("travel"),
+  "agentic-architecture": AgenticArchitectureVisual,
+  "agentic-investigation": agenticLayer("investigation"),
+  "agentic-validation": agenticLayer("validation"),
+  "agentic-approval": agenticLayer("approval"),
+  "agentic-n8n": agenticLayer("n8n"),
 }
 
 export default function VisualRegistry({ type }) {

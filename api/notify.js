@@ -6,6 +6,7 @@ const ALLOWED_EVENT_TYPES = new Set([
     "project_section_viewed",
     "video_started",
     "video_completed",
+    "featured_project_opened",
     "high_engagement",
     "engagement_summary",
   ]);
@@ -13,6 +14,12 @@ const ALLOWED_EVENT_TYPES = new Set([
   function safeText(value, maxLength = 300) {
     if (!value) return "";
     return String(value).replace(/[`<>@]/g, "").slice(0, maxLength);
+  }
+
+  function displayReferrer(referrer, source) {
+    if (source && (!referrer || referrer === "Direct / unknown")) return source;
+    if (source) return `${referrer} · ${source}`;
+    return referrer || "Direct / unknown";
   }
 
   function getReferrerLabel(referrer) {
@@ -208,7 +215,7 @@ const ALLOWED_EVENT_TYPES = new Set([
                   { name: "Value", value: value || "n/a", inline: true },
                   {
                     name: "Referrer",
-                    value: referrer || "Direct / unknown",
+                    value: displayReferrer(referrer, referrerSource),
                     inline: false,
                   },
                 ],

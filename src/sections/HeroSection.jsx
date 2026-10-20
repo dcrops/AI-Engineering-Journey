@@ -10,8 +10,8 @@ import {
 
 export default function HeroSection() {
   return (
-    <section className="relative mx-auto flex min-h-screen max-w-[1600px] flex-col justify-between px-8 py-8 md:px-16">
-      <header className="flex items-center justify-between">
+    <section className="relative mx-auto flex max-w-[1600px] flex-col gap-16 px-8 py-8 md:px-16">
+      <header className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
         <div className="flex items-center gap-4">
           <img
             src="/crc_logo.png"
@@ -28,37 +28,55 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="text-[10px] uppercase tracking-[0.4em] text-zinc-500">
-          Engineering Journey
-        </div>
+        <nav aria-label="Portfolio" className="flex max-w-xl flex-wrap gap-x-5 gap-y-3 lg:justify-end">
+          <a href="#featured" className="text-[10px] font-black uppercase tracking-[0.22em] text-zinc-400 transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70">
+            Featured work
+          </a>
+          <a href="#journey" className="text-[10px] font-black uppercase tracking-[0.22em] text-zinc-400 transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70">
+            Engineering journey
+          </a>
+          <a href="#demonstrations" className="text-[10px] font-black uppercase tracking-[0.22em] text-zinc-400 transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70">
+            Demonstrations
+          </a>
+          <a
+            href="/David-Cropper-CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track
+            data-track-label="Resume clicked"
+            className="text-[10px] font-black uppercase tracking-[0.22em] text-zinc-400 transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
+          >
+            CV
+          </a>
+          <a href="#contact" className="text-[10px] font-black uppercase tracking-[0.22em] text-zinc-400 transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70">
+            Contact
+          </a>
+        </nav>
       </header>
 
       <div className="grid gap-12 lg:grid-cols-[1.2fr_.8fr] lg:items-start">
-        <div>
+        <div className="min-w-0">
           <div className="mb-6 text-[11px] font-black uppercase tracking-[0.45em] text-violet-300">
-            AN AI ENGINEERING JOURNEY
+            AI Engineer · Melbourne
           </div>
 
-          <h1 className="max-w-5xl text-6xl font-black uppercase leading-[0.88] tracking-tight md:text-8xl xl:text-[9rem]">
-            FROM
-            <br />
-            OPERATIONAL
-            <br />
-            DIAGNOSTICS
-            <br />
-            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-500 to-cyan-300 bg-clip-text text-transparent">
-              TO
-              <br />
-              GOVERNANCE-AWARE
-              <br />
-              OPERATIONAL
-              <br />
-              AI SYSTEMS.
+          <h1 className="max-w-5xl text-4xl font-black uppercase leading-[0.92] tracking-tight sm:text-6xl md:text-7xl xl:text-8xl">
+            Reliable AI applications.
+            <span className="mt-3 block overflow-hidden bg-gradient-to-r from-violet-400 via-fuchsia-500 to-cyan-300 bg-clip-text text-transparent">
+              Agentic workflows and business-system integration.
             </span>
           </h1>
+
+          <p className="mt-8 max-w-xl text-base leading-8 text-zinc-300 md:text-lg">
+            I build governed AI applications and business workflows that combine
+            language models, Python services, deterministic checks, API
+            integrations, and human approval. These independent AI engineering
+            projects are supported by my earlier commercial software testing and
+            data engineering experience at nbn Australia.
+          </p>
         </div>
 
-        <div className="mt-10 w-full max-w-md justify-self-end rounded-3xl border border-cyan-400/20 bg-black/60 p-7 shadow-[0_0_80px_rgba(0,255,255,0.06)] backdrop-blur-sm">
+        <div id="contact" className="scroll-mt-8 mt-2 w-full max-w-md justify-self-end rounded-3xl border border-cyan-400/20 bg-black/60 p-7 shadow-[0_0_80px_rgba(0,255,255,0.06)] backdrop-blur-sm lg:mt-10">
           <div className="text-[10px] uppercase tracking-[0.35em] text-cyan-300">
             Connect
           </div>
@@ -78,13 +96,13 @@ export default function HeroSection() {
 
           <div className="mt-6 space-y-3 text-sm text-zinc-400">
             <a
-              href="mailto:dave_cropper2003@yahoo.co.uk"
+              href="mailto:djcropster@gmail.com"
               data-track
               data-track-label="Email contact clicked"
               className="flex items-center gap-3 transition-colors hover:text-cyan-300"
             >
               <FaEnvelope className="text-cyan-400" />
-              <span>dave_cropper2003@yahoo.co.uk</span>
+              <span>djcropster@gmail.com</span>
             </a>
 
             <a
@@ -102,22 +120,22 @@ export default function HeroSection() {
             <div className="space-y-5 text-sm text-zinc-300">
               <div className="flex items-center gap-4">
                 <div className="h-2.5 w-2.5 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(168,85,247,0.9)]" />
-                <span>Governance-Aware AI Systems</span>
+                <span>Agentic workflows</span>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="h-2.5 w-2.5 rounded-full bg-fuchsia-400 shadow-[0_0_12px_rgba(232,121,249,0.9)]" />
-                <span>Operational Intelligence</span>
+                <span>Workflow automation</span>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="h-2.5 w-2.5 rounded-full bg-blue-400 shadow-[0_0_12px_rgba(96,165,250,0.9)]" />
-                <span>Retrieval & Orchestration</span>
+                <span>Applied AI and retrieval</span>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.9)]" />
-                <span>Explainable AI Workflows</span>
+                <span>Governance and reliable AI</span>
               </div>
             </div>
           </div>

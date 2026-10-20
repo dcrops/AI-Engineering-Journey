@@ -6,14 +6,14 @@ const demonstrationsOrder = [
     badge: "①",
     phaseId: "05",
     title: "Operational Intelligence Platform",
-    tagline: "Flagship AI Engineering Project",
+    tagline: "Deterministic analytics and executive reporting",
     buttonLabel: "Watch Operational Intelligence Demo",
   },
   {
     badge: "②",
     phaseId: "04",
     title: "Governance-Aware Document Intelligence RAG",
-    tagline: "Production RAG & Orchestration",
+    tagline: "Document retrieval and grounded answers",
     buttonLabel: "Watch Document Intelligence Demo",
   },
   {

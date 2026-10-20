@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { layerDetails } from "../data/layerDetails"
 import VisualRegistry from "../visuals/VisualRegistry"
+import DevelopmentStatus from "./DevelopmentStatus"
 import { motion, AnimatePresence } from "framer-motion"
 import { AlertTriangle, Wrench, ShieldCheck, Play } from "lucide-react"
 import { trackJourneyEvent } from "../utils/visitorTracking"
 import ProjectVideoModal from "../components/ProjectVideoModal"
+import BackToFeatured from "../components/BackToFeatured"
 
 export default function PhaseSection({ phase }) {
   const [selectedLayer, setSelectedLayer] = useState(null)
@@ -26,6 +28,8 @@ export default function PhaseSection({ phase }) {
     }
   }
 
+  const wideWorkflow = phase.id === "07" || phase.id === "08"
+
   function handleAdvancedToggle() {
     const willShowAdvancedLayers = !showAdvancedLayers
 
@@ -39,7 +43,10 @@ export default function PhaseSection({ phase }) {
   }
 
   return (
-    <section className="relative grid min-h-[250px] gap-8 overflow-visible border-t border-white/10 py-10 lg:grid-cols-[120px_320px_1fr]">
+    <section
+      id={phase.id}
+      className="relative grid min-h-[250px] scroll-mt-8 gap-8 overflow-visible border-t border-white/10 py-10 lg:grid-cols-[120px_320px_1fr]"
+    >
       <div className="relative z-20 text-6xl font-black text-violet-500 md:text-7xl">
         {phase.id}
       </div>
@@ -52,14 +59,37 @@ export default function PhaseSection({ phase }) {
         <h2 className="mt-2 max-w-xs text-3xl font-black leading-tight">
           {phase.title}
         </h2>
+        <BackToFeatured />
       </div>
 
-      <div className="relative z-20">
+      <div className="relative z-20 min-w-0">
         <div className="max-w-5xl space-y-6 text-[19px] leading-9 text-zinc-300">
         {phase.description.split("\n\n").map((paragraph, i) => (
             <p key={i}>{paragraph}</p>
         ))}
         </div>
+        {!wideWorkflow && engineeringBody()}
+      </div>
+      {wideWorkflow && (
+        <div className="relative z-20 min-w-0 lg:col-span-3 lg:-mx-8">
+          {engineeringBody()}
+        </div>
+      )}
+    </section>
+  )
+
+  function engineeringBody() {
+    return (
+      <>
+        {phase.architectureVisual && (
+          <div className="mt-8">
+            <VisualRegistry type={phase.architectureVisual} />
+          </div>
+        )}
+
+        {phase.developmentStatus && (
+          <DevelopmentStatus status={phase.developmentStatus} />
+        )}
 
         {phase.layers && (
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -191,17 +221,23 @@ export default function PhaseSection({ phase }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className={`relative z-20 mt-10 rounded-3xl border border-white/10 bg-black/90 p-8 backdrop-blur-md transition-all duration-500 ${
-                selectedDetail.layout === "wide"
-                  ? "xl:-ml-64 xl:w-[calc(100%+20rem)]"
-                  : ""
+              className={`relative z-20 mt-10 rounded-3xl border border-white/10 bg-black/90 backdrop-blur-md transition-all duration-500 ${
+                wideWorkflow
+                  ? "p-4 sm:p-6"
+                  : `p-8 ${
+                      selectedDetail.layout === "wide"
+                        ? "xl:-ml-64 xl:w-[calc(100%+20rem)]"
+                        : ""
+                    }`
               }`}
             >
               <div
-                className={`grid gap-8 ${
-                  selectedDetail.layout === "wide"
-                    ? "xl:grid-cols-[0.8fr_1.6fr]"
-                    : "xl:grid-cols-[1fr_1fr]"
+                className={`grid min-w-0 gap-8 ${
+                  wideWorkflow
+                    ? ""
+                    : selectedDetail.layout === "wide"
+                      ? "xl:grid-cols-[0.8fr_1.6fr]"
+                      : "xl:grid-cols-[1fr_1fr]"
                 }`}
               >
                 <div>
@@ -209,7 +245,7 @@ export default function PhaseSection({ phase }) {
                     {selectedDetail.title}
                   </div>
 
-                  <div className="mt-6 grid gap-4">
+                  <div className={`mt-6 grid gap-4 ${wideWorkflow ? "lg:grid-cols-3" : ""}`}>
                     <SummaryCard
                       label="The Problem"
                       text={selectedDetail.body.problem}
@@ -233,8 +269,8 @@ export default function PhaseSection({ phase }) {
                   </div>
                 </div>
 
-                <div>
-                  <div className="rounded-2xl border border-white/10 bg-black/30 p-5">
+                <div className="min-w-0">
+                  <div className={`min-w-0 rounded-2xl border border-white/10 bg-black/30 ${wideWorkflow ? "p-3 sm:p-4" : "p-5"}`}>
                     <VisualRegistry type={selectedDetail.visual} />
                   </div>
                 </div>
@@ -242,9 +278,9 @@ export default function PhaseSection({ phase }) {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </section>
-  )
+      </>
+    )
+  }
 }
 
 function EngineeringHighlights({ highlights }) {

@@ -67,6 +67,7 @@ async function notifyDiscord(payload) {
         pageTitle: document.title,
         referrer: document.referrer,
         visitorType: getVisitorType(),
+        referrerSource: getOutreachSource(),
       }),
     });
   } catch {
@@ -222,6 +223,15 @@ function recordEngagement(eventType, params = {}) {
   scheduleEngagementSummary();
 }
 
+function getOutreachSource() {
+  try {
+    const source = new URLSearchParams(window.location.search).get("src") || "";
+    return /^[A-Za-z0-9_-]{1,40}$/.test(source) ? source : "";
+  } catch {
+    return "";
+  }
+}
+
 function shouldNotify(eventType, value, label = "") {
     const normalisedLabel = String(label).toLowerCase();
   
@@ -232,6 +242,8 @@ function shouldNotify(eventType, value, label = "") {
     if (eventType === "video_started" || eventType === "video_completed") {
       return true;
     }
+
+    if (eventType === "featured_project_opened") return true;
   
     if (eventType === "time_on_page") {
       return Number(value) >= 60;

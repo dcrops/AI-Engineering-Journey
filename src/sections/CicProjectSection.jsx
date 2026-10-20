@@ -5,6 +5,7 @@ import { cicProject, cicLayerDetails } from "../data/cicProject"
 import CicArchitectureVisual from "../visuals/CicArchitectureVisual"
 import CicLayerVisual from "../visuals/CicLayerVisual"
 import { trackJourneyEvent } from "../utils/visitorTracking"
+import BackToFeatured from "../components/BackToFeatured"
 
 export default function CicProjectSection() {
   const project = cicProject
@@ -31,7 +32,10 @@ export default function CicProjectSection() {
   }
 
   return (
-    <section className="relative grid min-h-[250px] gap-8 overflow-visible border-t border-white/10 py-10 lg:grid-cols-[120px_320px_1fr]">
+    <section
+      id="06"
+      className="relative grid min-h-[250px] scroll-mt-8 gap-8 overflow-visible border-t border-white/10 py-10 lg:grid-cols-[120px_320px_1fr]"
+    >
       <div className="relative z-20 text-6xl font-black text-violet-500 md:text-7xl">
         {project.id}
       </div>
@@ -46,6 +50,7 @@ export default function CicProjectSection() {
         </h2>
 
         <p className="mt-4 text-sm leading-7 text-zinc-400">{project.subtitle}</p>
+        <BackToFeatured />
       </div>
 
       <div className="relative z-20">

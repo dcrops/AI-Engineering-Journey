@@ -126,7 +126,7 @@ import {
           <div className="flex items-center gap-3">
             <Info className="h-5 w-5 text-blue-300" />
             <p className="text-sm text-zinc-300">
-              Telemetry is captured at every stage to provide visibility into decisions, evidence used and system performance.
+              The local demonstration can record decisions, evidence and timings at each stage. The log, trace and figures below are one sample request from the RMIT_Demo collection, not live operational metrics.
             </p>
           </div>
         </div>
@@ -150,14 +150,14 @@ import {
         </div>
   
         <div className="mt-6 grid gap-5 xl:grid-cols-[0.9fr_1.35fr]">
-          <Panel title="Example Telemetry Log">
+          <Panel title="Sample log · RMIT_Demo">
             <pre className="max-h-[520px] overflow-auto rounded-2xl border border-white/10 bg-black/60 p-5 text-xs leading-5 text-yellow-200">
               <code>{logText}</code>
             </pre>
           </Panel>
   
           <div className="space-y-5">
-            <Panel title="Retrieval Trace Example">
+            <Panel title="Sample retrieval trace">
               <div className="overflow-hidden rounded-xl border border-white/10">
                 <div className="grid grid-cols-[0.35fr_1.4fr_0.8fr_0.5fr_1.2fr] border-b border-white/10 px-4 py-3 text-[9px] font-black uppercase tracking-[0.16em] text-zinc-500">
                   <div>Rank</div>
@@ -182,7 +182,7 @@ import {
               </div>
             </Panel>
   
-            <Panel title="Timing Breakdown">
+            <Panel title="Sample timing">
               <div className="grid grid-cols-4 gap-4 text-xs text-zinc-400">
                 <Metric label="Orchestration" value="18ms" />
                 <Metric label="Retrieval" value="692ms" />
@@ -198,7 +198,7 @@ import {
             </Panel>
   
             <div className="grid gap-5 xl:grid-cols-2">
-              <Panel title="Grounding & Confidence">
+              <Panel title="Sample grounding result">
                 <div className="grid grid-cols-3 gap-4 text-sm">
                   <Metric label="Grounding Result" value="PASS" colour="text-emerald-300" />
                   <Metric label="Evidence Sufficient" value="Yes" colour="text-emerald-300" />
@@ -210,7 +210,7 @@ import {
                 </div>
               </Panel>
   
-              <Panel title="Response Outcome">
+              <Panel title="Sample response">
                 <div className="space-y-3 text-sm">
                   <Outcome label="Answer Status" value="ANSWERED" />
                   <Outcome label="Sources Used" value="7" />

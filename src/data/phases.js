@@ -1,3 +1,9 @@
+import {
+  agenticDevelopmentStatus,
+  agenticLayers,
+  northstarWorkflows,
+} from "./workflowProjects"
+
 export const phases = [
   {
     id: "01",
@@ -32,7 +38,7 @@ Each project builds on the previous one, progressing from deterministic rule eng
     ],
     engineeringHighlights: [
       ["6", "Processing Engines"],
-      ["17", "Production Features"],
+      ["17", "Implemented Features"],
       ["8", "Australian Jurisdictions"],
       ["7", "Governance Status Codes"],
     ],
@@ -175,12 +181,35 @@ This became the Operational Intelligence Platform — a deterministic-first anal
       ["595", "Automated Tests"],
       ["15", "Golden User Journeys"],
       ["18", "Engineering Components"],
-      ["21", "Production Features"],
+      ["21", "Implemented Features"],
     ],
     demoVideo: {
       src: "/videos/ops-demo.mp4",
       title: "Operational Intelligence Platform",
       buttonLabel: "Watch Engineering Demo",
     },
+  },
+  {
+    id: "07",
+    label: "WORKFLOW AUTOMATION",
+    title: "Northstar — Applied AI Workflow Automation",
+    trackingLabel: "Northstar workflow project opened",
+    description: `Northstar is four related n8n prototypes, not one automation platform. Each workflow has its own trigger, its own decision about where a language model is useful, and its own deterministic controls.
+
+Support triage, daily revenue validation, and travel approval are active. Invoice intake is present and currently inactive. Revenue validation uses SQL only. Invoice submission uses a simulated accounting API.`,
+    architectureVisual: "northstar-architecture",
+    layers: northstarWorkflows.map((workflow) => workflow.layer),
+  },
+  {
+    id: "08",
+    label: "AGENTIC ORCHESTRATION",
+    title: "Governed Agentic Support Orchestration",
+    trackingLabel: "Agentic support project opened",
+    description: `A customer reports that a booking failed while two payments were captured. Specialist agents and a bounded supervisor investigate mock CRM, booking, payment, policy, and reconciliation records. Deterministic code checks a proposed resolution. A person approves or rejects it, and n8n carries the Slack request and the decision back to FastAPI.
+
+This is a working path on simulated systems. It is not a finished or commercially deployed platform, and no refund is executed.`,
+    architectureVisual: "agentic-architecture",
+    developmentStatus: agenticDevelopmentStatus,
+    layers: agenticLayers.map((layer) => layer.layer),
   },
 ]

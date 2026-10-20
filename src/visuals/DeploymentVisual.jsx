@@ -17,11 +17,11 @@ import {
   } from "lucide-react"
   
   const overview = [
-    ["Streamlit UI", "Active", Monitor, "text-cyan-300"],
-    ["FastAPI Service", "Active", Box, "text-cyan-300"],
-    ["API Authentication", "Enabled", ShieldCheck, "text-emerald-300"],
-    ["Docker Runtime", "Healthy", ShipWheel, "text-blue-300"],
-    ["ChromaDB", "Connected", Database, "text-emerald-300"],
+    ["Streamlit UI", "Local demo", Monitor, "text-cyan-300"],
+    ["FastAPI Service", "Local demo", Box, "text-cyan-300"],
+    ["API Authentication", "Configured", ShieldCheck, "text-emerald-300"],
+    ["Docker Runtime", "Local", ShipWheel, "text-blue-300"],
+    ["ChromaDB", "Local", Database, "text-emerald-300"],
   ]
   
   const flow = [
@@ -37,25 +37,25 @@ import {
     ["Python Version", "3.10", Server],
     ["API Server Host", "0.0.0.0", Monitor],
     ["API Server Port", "8000", ShieldCheck],
-    ["Docker Compose", "Running", Network],
-    ["Containers", "3 / 3 Healthy", Box],
+    ["Docker Compose", "Local", Network],
+    ["Containers", "3 local services", Box],
     ["Network", "rag-network", Network],
     ["Telemetry Logging", "Enabled", Activity],
   ]
   
   const persistence = [
-    ["ChromaDB", "Connected", "Collections", "12", "Documents", "3,248", Database, "text-emerald-300"],
-    ["Indexed Documents", "Indexed", "Total Chunks", "18,732", "Clients", "5", FileText, "text-violet-300"],
-    ["Telemetry Logs", "Enabled", "Total Logs", "24,531", "Storage", "245 MB", Activity, "text-yellow-300"],
+    ["ChromaDB", "Sample", "Collections", "12", "Documents", "3,248", Database, "text-emerald-300"],
+    ["Indexed Documents", "Sample", "Total Chunks", "18,732", "Sample sets", "5", FileText, "text-violet-300"],
+    ["Telemetry Logs", "Sample", "Total Logs", "24,531", "Storage", "245 MB", Activity, "text-yellow-300"],
   ]
   
   const diagnostics = [
-    ["Active Containers", "3 / 3", "All services healthy", Server, "text-cyan-300"],
+    ["Local Containers", "3", "Demonstration services", Server, "text-cyan-300"],
     ["API Routes Enabled", "5", "/ask, /ingest, /health +2 internal", Monitor, "text-blue-300"],
-    ["Indexed Clients", "5", "Active client collections", Users, "text-cyan-300"],
-    ["Vector Collections", "12", "Loaded in ChromaDB", Database, "text-emerald-300"],
+    ["Sample Collections", "5", "Not commercial clients", Users, "text-cyan-300"],
+    ["Vector Collections", "12", "Sample ChromaDB collections", Database, "text-emerald-300"],
     ["Authenticated Endpoints", "5", "Protected by API key", Lock, "text-emerald-300"],
-    ["Telemetry Enabled", "Yes", "Request logging active", BarChart3, "text-violet-300"],
+    ["Telemetry", "Sample", "Illustrative request logs", BarChart3, "text-violet-300"],
   ]
   
   export default function DeploymentVisual() {
@@ -64,10 +64,16 @@ import {
         <div className="flex items-center justify-between">
           <SectionTitle>Deployment Overview</SectionTitle>
   
-          <button className="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-cyan-200">
-            Export Deployment Report
-          </button>
+          <div className="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-cyan-200">
+            Local demo snapshot
+          </div>
         </div>
+
+        <p className="mt-4 max-w-3xl text-sm leading-6 text-zinc-400">
+          Local demonstration. Collection counts are sample data, and the status
+          marks are illustrative. This panel does not show commercial clients or
+          production service health.
+        </p>
   
         <div className="mt-5 grid grid-cols-5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
           {overview.map(([label, status, Icon, colour]) => (
@@ -101,7 +107,7 @@ import {
                         </div>
                         <p className="mt-2 text-sm leading-6 text-zinc-300">{text}</p>
                         <div className="mt-3 text-[10px] font-black uppercase tracking-[0.18em] text-emerald-300">
-                          ● Active
+                          ● Local demo
                         </div>
                       </div>
                     </div>
@@ -185,21 +191,21 @@ import {
                       API Key Authentication
                     </div>
                     <p className="mt-2 text-sm text-zinc-300">
-                      Enabled and enforced on protected endpoints.
+                      Configured on protected endpoints in the local demonstration.
                     </p>
                   </div>
                 </div>
   
                 <div className="mt-5 space-y-3 text-sm">
-                  <KeyValue label="Auth Status" value="● Active" good />
+                  <KeyValue label="Auth Status" value="● Configured locally" good />
                   <KeyValue label="Protected Endpoints" value="5" />
-                  <KeyValue label="Unauthorized Requests" value="0" />
-                  <KeyValue label="Last Authenticated" value="1m ago" />
+                  <KeyValue label="Unauthorized Requests" value="Illustrative" />
+                  <KeyValue label="Last Authenticated" value="Sample" />
                 </div>
   
-                <button className="mt-5 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-zinc-300">
-                  Manage API Keys
-                </button>
+                <div className="mt-5 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-center text-sm text-zinc-300">
+                  Illustrative security panel
+                </div>
               </div>
             </Panel>
   

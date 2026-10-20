@@ -23,17 +23,17 @@ export default function ProjectDemonstrationsSection() {
   }
 
   return (
-    <section className="border-t border-white/10 py-16">
+    <section id="demonstrations" className="scroll-mt-8 border-t border-white/10 py-16">
       <div className="text-center">
         <div className="text-[10px] font-black uppercase tracking-[0.45em] text-cyan-300">
           Project Demonstrations
         </div>
 
         <p className="mx-auto mt-4 max-w-3xl text-[17px] leading-8 text-zinc-400">
-          If you&apos;re short on time, start here.
+          Optional walkthroughs. Read the project first; the videos show the
+          system running.
           <br />
-          Available walkthroughs are under 4 minutes and demonstrate a complete
-          engineering project.
+          Available walkthroughs are under 4 minutes.
         </p>
       </div>
 
